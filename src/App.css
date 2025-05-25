@@ -85,3 +85,436 @@ main {
   }
 }
 
+/* Loader Styles */
+.loader-container {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(135deg, var(--ivory) 0%, var(--blush-pink) 100%);
+  z-index: 9999;
+  opacity: 1;
+  transition: opacity 1.2s ease-out;
+  overflow: hidden;
+}
+
+.loader-container.fade-out {
+  opacity: 0;
+}
+
+/* Background effect with slow color transition */
+.loader-background-effect {
+  position: absolute;
+  top: -50%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
+  background: radial-gradient(circle at center, 
+                             rgba(255,255,255,0.1) 0%, 
+                             rgba(212,175,55,0.05) 30%, 
+                             rgba(248,215,218,0.05) 70%, 
+                             rgba(209,231,221,0.1) 100%);
+  opacity: 0.7;
+  animation: rotate-gradient 15s linear infinite, pulse-opacity 8s ease-in-out infinite;
+  z-index: 0;
+}
+
+.loader-content {
+  text-align: center;
+  max-width: 400px;
+  width: 80%;
+  position: relative;
+  z-index: 2;
+}
+
+.loader-monogram {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 2rem;
+  opacity: 0;
+  animation: fadeInScale 1.8s ease-out forwards;
+  position: relative;
+}
+
+.loader-monogram:before {
+  content: '';
+  position: absolute;
+  width: 120px;
+  height: 120px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(255,255,255,0.8) 0%, rgba(255,255,255,0) 70%);
+  z-index: -1;
+  opacity: 0;
+  animation: glow-pulse 4s ease-in-out infinite 1s;
+}
+
+.loader-monogram span {
+  font-family: 'Playfair Display', serif;
+  font-size: 3.5rem;
+  font-weight: 700;
+  color: var(--dark-text);
+  position: relative;
+  transition: color 3s ease;
+}
+
+.loader-monogram span:nth-child(1) {
+  color: var(--blush-pink);
+  text-shadow: 2px 2px 4px rgba(0,0,0,0.1);
+  animation: elegant-heartbeat 4s infinite, color-shift 8s infinite;
+}
+
+.loader-monogram span:nth-child(2) {
+  font-size: 2.5rem;
+  margin: 0 0.5rem;
+  color: var(--gold);
+  animation: float 6s ease-in-out infinite;
+}
+
+.loader-monogram span:nth-child(3) {
+  color: var(--mint-green);
+  text-shadow: 2px 2px 4px rgba(0,0,0,0.1);
+  animation: elegant-heartbeat 4s infinite 1s, color-shift 8s infinite 4s;
+}
+
+/* Sparkle effect for monogram */
+.loader-monogram span::before,
+.loader-monogram span::after {
+  content: '';
+  position: absolute;
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background-color: var(--gold);
+  opacity: 0;
+  z-index: -1;
+}
+
+.loader-monogram span:nth-child(1)::before {
+  top: 0;
+  left: 0;
+  animation: sparkle 4s infinite 0.2s;
+}
+
+.loader-monogram span:nth-child(3)::after {
+  bottom: 0;
+  right: 0;
+  animation: sparkle 4s infinite 2.5s;
+}
+
+.loader-progress {
+  height: 4px;
+  background-color: rgba(0,0,0,0.1);
+  border-radius: 10px;
+  overflow: hidden;
+  margin-bottom: 1rem;
+  opacity: 0;
+  animation: fadeIn 1.2s ease-out 0.8s forwards;
+  position: relative;
+}
+
+.loader-progress:after {
+  content: '';
+  position: absolute;
+  top: -10px;
+  left: 0;
+  width: 100%;
+  height: 24px;
+  background: radial-gradient(ellipse at center, rgba(255,255,255,0.3) 0%, rgba(255,255,255,0) 70%);
+  opacity: 0;
+  animation: progress-glow 3s ease-in-out infinite;
+}
+
+.loader-bar {
+  height: 100%;
+  background: linear-gradient(90deg, var(--gold) 0%, var(--blush-pink) 50%, var(--mint-green) 100%);
+  width: 0;
+  transition: width 0.6s ease-out;
+  border-radius: 10px;
+  position: relative;
+  overflow: hidden;
+  background-size: 200% 100%;
+  animation: gradient-shift 8s ease infinite;
+}
+
+.loader-bar::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255,255,255,0.4), transparent);
+  animation: shimmer 3s infinite;
+  transform: skewX(-20deg);
+}
+
+.loader-text {
+  font-family: 'Lato', sans-serif;
+  font-size: 1rem;
+  color: var(--dark-text);
+  font-style: italic;
+  opacity: 0;
+  animation: typewriter 3.5s steps(30, end) 1.2s forwards;
+  white-space: nowrap;
+  overflow: hidden;
+  width: 0;
+  margin: 0 auto;
+}
+
+.loader-decoration {
+  position: absolute;
+  width: 120px;
+  height: 120px;
+  background-size: contain;
+  background-repeat: no-repeat;
+  opacity: 0;
+  background-image: url('/images/floral-corner.png');
+  animation: fadeInFloat 2s ease-out forwards, gentle-rotate 15s linear infinite;
+  transform-origin: center;
+}
+
+.loader-decoration.top-left {
+  top: 20px;
+  left: 20px;
+  transform: rotate(0deg);
+  animation-delay: 0.4s, 0s;
+}
+
+.loader-decoration.top-right {
+  top: 20px;
+  right: 20px;
+  transform: rotate(90deg);
+  animation-delay: 0.8s, 2s;
+}
+
+.loader-decoration.bottom-left {
+  bottom: 20px;
+  left: 20px;
+  transform: rotate(270deg);
+  animation-delay: 1.2s, 4s;
+}
+
+.loader-decoration.bottom-right {
+  bottom: 20px;
+  right: 20px;
+  transform: rotate(180deg);
+  animation-delay: 1.6s, 6s;
+}
+
+/* Particles background */
+.loader-particles {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  z-index: 1;
+}
+
+.particle {
+  position: absolute;
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  opacity: 0;
+  animation: float-particle 12s ease-in-out infinite, fade-particle 12s ease-in-out infinite;
+}
+
+.particle.star {
+  background: transparent;
+  box-shadow: 0 0 5px 2px var(--gold);
+  width: 3px;
+  height: 3px;
+  animation: twinkle 6s ease-in-out infinite, float-particle 20s ease-in-out infinite;
+}
+
+.particle:nth-child(1) {
+  top: 20%;
+  left: 20%;
+  background-color: var(--blush-pink);
+  animation-delay: 0s;
+}
+
+.particle:nth-child(2) {
+  top: 70%;
+  left: 30%;
+  background-color: var(--mint-green);
+  animation-delay: 2s;
+}
+
+.particle:nth-child(3) {
+  top: 40%;
+  left: 70%;
+  background-color: var(--gold);
+  animation-delay: 4s;
+}
+
+.particle:nth-child(4) {
+  top: 80%;
+  left: 80%;
+  background-color: var(--blush-pink);
+  animation-delay: 6s;
+}
+
+.particle:nth-child(5) {
+  top: 30%;
+  left: 50%;
+  background-color: var(--gold);
+  animation-delay: 8s;
+}
+
+.particle:nth-child(6) {
+  top: 60%;
+  left: 10%;
+  background-color: var(--mint-green);
+  animation-delay: 10s;
+}
+
+.particle:nth-child(7) {
+  top: 25%;
+  left: 85%;
+  animation-delay: 1s;
+}
+
+.particle:nth-child(8) {
+  top: 85%;
+  left: 45%;
+  animation-delay: 3s;
+}
+
+.particle:nth-child(9) {
+  top: 15%;
+  left: 35%;
+  animation-delay: 5s;
+}
+
+/* Animation keyframes */
+@keyframes elegant-heartbeat {
+  0% { transform: scale(1); }
+  10% { transform: scale(1.08); }
+  20% { transform: scale(1); }
+  30% { transform: scale(1.05); }
+  40% { transform: scale(1); }
+  100% { transform: scale(1); }
+}
+
+@keyframes color-shift {
+  0% { filter: hue-rotate(0deg); }
+  50% { filter: hue-rotate(10deg); }
+  100% { filter: hue-rotate(0deg); }
+}
+
+@keyframes float {
+  0% { transform: translateY(0) rotate(0deg); }
+  25% { transform: translateY(-5px) rotate(2deg); }
+  50% { transform: translateY(0) rotate(0deg); }
+  75% { transform: translateY(5px) rotate(-2deg); }
+  100% { transform: translateY(0) rotate(0deg); }
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes fadeInScale {
+  0% { opacity: 0; transform: scale(0.8); }
+  60% { opacity: 1; transform: scale(1.05); }
+  100% { opacity: 1; transform: scale(1); }
+}
+
+@keyframes fadeInFloat {
+  0% { opacity: 0; transform: translateY(15px) rotate(var(--rotation, 0deg)); }
+  100% { opacity: 0.4; transform: translateY(0) rotate(var(--rotation, 0deg)); }
+}
+
+@keyframes shimmer {
+  0% { transform: translateX(-150%) skewX(-20deg); }
+  100% { transform: translateX(250%) skewX(-20deg); }
+}
+
+@keyframes typewriter {
+  0% { width: 0; opacity: 0; }
+  5% { opacity: 1; }
+  50% { width: 50%; }
+  100% { width: 100%; opacity: 1; }
+}
+
+@keyframes sparkle {
+  0% { transform: scale(0); opacity: 0; }
+  20% { transform: scale(1); opacity: 0.8; }
+  40% { transform: scale(0); opacity: 0; }
+  100% { transform: scale(0); opacity: 0; }
+}
+
+@keyframes float-particle {
+  0% { transform: translateY(0) translateX(0); }
+  25% { transform: translateY(-40px) translateX(20px); }
+  50% { transform: translateY(0) translateX(40px); }
+  75% { transform: translateY(40px) translateX(20px); }
+  100% { transform: translateY(0) translateX(0); }
+}
+
+@keyframes fade-particle {
+  0% { opacity: 0; }
+  25% { opacity: 0.5; }
+  75% { opacity: 0.5; }
+  100% { opacity: 0; }
+}
+
+@keyframes twinkle {
+  0% { opacity: 0; transform: scale(0.5); }
+  50% { opacity: 0.7; transform: scale(1.2); }
+  100% { opacity: 0; transform: scale(0.5); }
+}
+
+@keyframes gentle-rotate {
+  0% { transform: rotate(var(--rotation, 0deg)); }
+  100% { transform: rotate(calc(var(--rotation, 0deg) + 5deg)); }
+}
+
+@keyframes rotate-gradient {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+@keyframes pulse-opacity {
+  0% { opacity: 0.5; }
+  50% { opacity: 0.7; }
+  100% { opacity: 0.5; }
+}
+
+@keyframes glow-pulse {
+  0% { opacity: 0; transform: scale(0.8); }
+  50% { opacity: 0.3; transform: scale(1.2); }
+  100% { opacity: 0; transform: scale(0.8); }
+}
+
+@keyframes progress-glow {
+  0% { opacity: 0; }
+  50% { opacity: 0.5; }
+  100% { opacity: 0; }
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .loader-monogram span {
+    font-size: 2.5rem;
+  }
+  
+  .loader-monogram span:nth-child(2) {
+    font-size: 1.8rem;
+  }
+  
+  .loader-decoration {
+    width: 80px;
+    height: 80px;
+  }
+}
+

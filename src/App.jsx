@@ -22,6 +22,7 @@ function App() {
   const [isLoading, setIsLoading] = useState(true)
   const [showWelcomeModal, setShowWelcomeModal] = useState(false)
   const [isFirstVisit, setIsFirstVisit] = useState(true)
+  const [loadingProgress, setLoadingProgress] = useState(0)
 
   useEffect(() => {
     // Check if this is the first visit
@@ -32,10 +33,30 @@ function App() {
       localStorage.setItem('hasVisitedBefore', 'true')
     }
 
-    // Simulate loading assets
-    setTimeout(() => setIsLoading(false), 2000)
+    // Simulate loading progress with slower, more elegant pacing
+    const interval = setInterval(() => {
+      setLoadingProgress(prev => {
+        // More controlled progression with the slower interval
+        const newProgress = prev + (Math.random() * 8) + 2; // More consistent increments
+        return newProgress >= 100 ? 100 : newProgress;
+      });
+    }, 600);
     
-    // Show welcome modal after 10 seconds for first visit, 1 minute for subsequent visits
+    // Complete loading after animation finishes
+    setTimeout(() => {
+      clearInterval(interval);
+      setLoadingProgress(100);
+      
+      // Add fade-out class before removing loader
+      const loaderContainer = document.querySelector('.loader-container');
+      if (loaderContainer) {
+        loaderContainer.classList.add('fade-out');
+      }
+      
+      setTimeout(() => setIsLoading(false), 1200); // Longer, more graceful exit
+    }, 3000); // Extended slightly for more complete animation experience
+    
+    // Show welcome modal after loading
     const modalTimer = setTimeout(() => {
       // Check if user has already seen the modal in this session
       const hasSeenModal = sessionStorage.getItem('hasSeenWelcomeModal')
@@ -45,10 +66,11 @@ function App() {
         // Mark that user has seen the modal in this session
         sessionStorage.setItem('hasSeenWelcomeModal', 'true')
       }
-    }, isFirstVisit ? 10000 : 10000) // 10 seconds for first visit, 1 minute for subsequent visits
+    }, isFirstVisit ? 10000 : 10000)
     
     return () => {
       clearTimeout(modalTimer)
+      clearInterval(interval)
     }
   }, [isFirstVisit])
 
@@ -57,7 +79,37 @@ function App() {
   }
 
   if (isLoading) {
-    return <div className="loader">Loading...</div>
+    return (
+      <div className="loader-container">
+        <div className="loader-background-effect"></div>
+        <div className="loader-particles">
+          <div className="particle"></div>
+          <div className="particle"></div>
+          <div className="particle"></div>
+          <div className="particle"></div>
+          <div className="particle"></div>
+          <div className="particle"></div>
+          <div className="particle star"></div>
+          <div className="particle star"></div>
+          <div className="particle star"></div>
+        </div>
+        <div className="loader-content">
+          <div className="loader-monogram">
+            <span>M</span>
+            <span>&</span>
+            <span>B</span>
+          </div>
+          <div className="loader-progress">
+            <div className="loader-bar" style={{ width: `${loadingProgress}%` }}></div>
+          </div>
+          <div className="loader-text">Our love story is loading...</div>
+        </div>
+        <div className="loader-decoration top-left" style={{ '--rotation': '0deg' }}></div>
+        <div className="loader-decoration top-right" style={{ '--rotation': '90deg' }}></div>
+        <div className="loader-decoration bottom-left" style={{ '--rotation': '270deg' }}></div>
+        <div className="loader-decoration bottom-right" style={{ '--rotation': '180deg' }}></div>
+      </div>
+    )
   }
 
   return (

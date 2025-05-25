@@ -144,7 +144,7 @@ function Wedding() {
             <div className="hero-ornament"></div>
             <h1>Manasa & Brahma Reddy</h1>
           </div>
-          <p>June 05, 2025</p>
+          <p>June 04, 2025</p>
         </div>
       </div>
       
@@ -157,8 +157,8 @@ function Wedding() {
               <div className="event-icon">🕍</div>
               <h3>The Ceremony</h3>
               <div className="event-time">
-                <p className="date">June 05, 2025</p>
-                <p className="time">08:35 PM</p>
+                <p className="date">June 04, 2025</p>
+                <p className="time">Evening</p>
                 <p className="auspicious">Hastha Nakshtram, Dhanassu Lagnam</p>
               </div>
               <div className="event-location">
@@ -175,17 +175,17 @@ function Wedding() {
               <div className="event-icon">🍽️</div>
               <h3>The Dinner</h3>
               <div className="event-time">
-                <p className="date">June 05, 2025</p>
+                <p className="date">June 04, 2025</p>
                 <p className="time">07:30 PM onwards</p>
               </div>
               <div className="event-location">
                 <h4>Family Residency</h4>
-                <p>Madhavaram (V), Thallur (M), Prakasam Dt.</p>
+                <p>Patha Yeruvaripalli(V), Kanigiri(M), Prakasam(D), Andhraparadesh(S)</p>
               </div>
               <div className="event-description">
                 <p>Celebrate with us at our dinner reception with music and festivities.</p>
               </div>
-              <a href="https://maps.google.com" target="_blank" rel="noopener noreferrer" className="btn">Get Directions</a>
+              <a href="https://maps.app.goo.gl/Ha7PXji5idJyzU9q7" target="_blank" rel="noopener noreferrer" className="btn">Get Directions</a>
             </div>
           </div>
         </div>
@@ -258,6 +258,17 @@ function Wedding() {
                 <h3>The Proposal</h3>
                 <p className="timeline-date">February 2023</p>
                 <p>Raj proposed during a sunset boat ride on the Arabian Sea. Priya said yes before he could even finish asking!</p>
+              </div>
+            </div>
+            
+            <div className="timeline-item">
+              <div className="timeline-image">
+                <div className="image-placeholder"></div>
+              </div>
+              <div className="timeline-content">
+                <h3>Wedding Day</h3>
+                <p className="timeline-date">June 04, 2025</p>
+                <p>We will be celebrating our union with family and friends in a traditional ceremony followed by dinner and festivities.</p>
               </div>
             </div>
           </div>

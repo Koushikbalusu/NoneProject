@@ -68,6 +68,7 @@ function App() {
       }
     }, isFirstVisit ? 10000 : 10000)
     
+    
     return () => {
       clearTimeout(modalTimer)
       clearInterval(interval)

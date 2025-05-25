@@ -5,6 +5,23 @@ import './Landing.css'
 function Landing() {
   const [scrolled, setScrolled] = useState(false)
   const buttonContainerRef = useRef(null)
+  const [currentSlide, setCurrentSlide] = useState(0)
+  
+  // Carousel images
+  const carouselImages = [
+    {
+      src: "https://res.cloudinary.com/da98b7kad/image/upload/v1748114073/PHOTO-2025-05-20-22-02-52_3_qzsufy.jpg",
+      alt: "Manasa & Brahma Reddy engagement photo 1"
+    },
+    {
+      src: "https://res.cloudinary.com/da98b7kad/image/upload/v1748114074/PHOTO-2025-05-20-22-02-53_wcmq6o.jpg",
+      alt: "Manasa & Brahma Reddy engagement photo 2"
+    },
+    {
+      src: "https://res.cloudinary.com/da98b7kad/image/upload/v1748114073/PHOTO-2025-05-20-22-02-52_2_dxu4rs.jpg",
+      alt: "Manasa & Brahma Reddy engagement photo 3"
+    }
+  ]
   
   useEffect(() => {
     // Normal animation for other elements
@@ -33,17 +50,37 @@ function Landing() {
 
     window.addEventListener('scroll', handleScroll);
     
+    // Carousel auto-rotation
+    const carouselInterval = setInterval(() => {
+      setCurrentSlide(prevSlide => (prevSlide + 1) % carouselImages.length);
+    }, 5000); // Change slide every 5 seconds
+    
     return () => {
       window.removeEventListener('scroll', handleScroll);
       clearTimeout(animationTimeout);
+      clearInterval(carouselInterval);
     };
-  }, []);
+  }, [carouselImages.length]);
 
   const scrollToContent = () => {
     window.scrollTo({
       top: window.innerHeight,
       behavior: 'smooth'
     });
+  };
+  
+  const goToSlide = (index) => {
+    setCurrentSlide(index);
+  };
+  
+  const nextSlide = () => {
+    setCurrentSlide(prevSlide => (prevSlide + 1) % carouselImages.length);
+  };
+  
+  const prevSlide = () => {
+    setCurrentSlide(prevSlide => 
+      prevSlide === 0 ? carouselImages.length - 1 : prevSlide - 1
+    );
   };
 
   return (
@@ -81,14 +118,45 @@ function Landing() {
         <div className="container">
           <div className="intro-content">
             <div className="intro-image">
-              <div className="image-placeholder"></div>
+              <div className="carousel-container">
+                <div className="carousel-slides" style={{ transform: `translateX(-${currentSlide * 100}%)` }}>
+                  {carouselImages.map((image, index) => (
+                    <div className="carousel-slide" key={index}>
+                      <img 
+                        src={image.src} 
+                        alt={image.alt} 
+                        className="couple-story-image"
+                      />
+                    </div>
+                  ))}
+                </div>
+                
+                <button className="carousel-arrow prev" onClick={prevSlide} aria-label="Previous image">
+                  &#10094;
+                </button>
+                <button className="carousel-arrow next" onClick={nextSlide} aria-label="Next image">
+                  &#10095;
+                </button>
+                
+                <div className="carousel-dots">
+                  {carouselImages.map((_, index) => (
+                    <button 
+                      key={index} 
+                      className={`carousel-dot ${index === currentSlide ? 'active' : ''}`}
+                      onClick={() => goToSlide(index)}
+                      aria-label={`Go to slide ${index + 1}`}
+                    />
+                  ))}
+                </div>
+              </div>
             </div>
             <div className="intro-text">
               <h2>Our Story</h2>
               <p>
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam in dui mauris. 
-                Vivamus hendrerit arcu sed erat molestie vehicula. Sed auctor neque eu tellus 
-                rhoncus ut eleifend nibh porttitor.
+                Our journey began with a chance meeting that blossomed into deep friendship and love. 
+                Through years of shared dreams, laughter, and growth, we discovered in each other a 
+                perfect companion for life's adventures. Now, we invite you to witness the next 
+                beautiful chapter as we unite our lives in marriage.
               </p>
               <Link to="/wedding" className="read-more">Read Our Full Story →</Link>
             </div>
@@ -102,22 +170,15 @@ function Landing() {
           <div className="event-cards">
             <div className="event-card">
               <h3>Haldi Ceremony</h3>
-              <p className="event-date">November 13, 2023</p>
+              <p className="event-date">June 4, 2025</p>
               <p>A traditional pre-wedding ceremony filled with turmeric, laughter and blessings</p>
               <Link to="/haldi" className="btn">Learn More</Link>
             </div>
             
             <div className="event-card">
               <h3>Wedding Ceremony</h3>
-              <p className="event-date">November 15, 2023</p>
+              <p className="event-date">June 4, 2025</p>
               <p>The auspicious union of two souls in a traditional Indian ceremony</p>
-              <Link to="/wedding" className="btn">Learn More</Link>
-            </div>
-            
-            <div className="event-card">
-              <h3>Reception</h3>
-              <p className="event-date">November 15, 2023</p>
-              <p>An evening of celebration, dining and dancing to honor the newlyweds</p>
               <Link to="/wedding" className="btn">Learn More</Link>
             </div>
           </div>

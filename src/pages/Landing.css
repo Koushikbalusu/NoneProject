@@ -297,35 +297,140 @@
 
 .intro-image {
   flex: 1;
+  margin-right: 2rem;
   position: relative;
 }
 
-.image-placeholder {
+/* Carousel Styles */
+.carousel-container {
+  position: relative;
   width: 100%;
   height: 450px;
-  background-color: var(--blush-pink);
-  border-radius: 10px;
-  position: relative;
   overflow: hidden;
+  border-radius: 10px;
   box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
   transition: all 0.5s ease;
 }
 
-.image-placeholder:hover {
+.carousel-container:hover {
   transform: translateY(-10px);
   box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
 }
 
-.image-placeholder:before {
-  content: '';
+.carousel-slides {
+  display: flex;
+  width: 100%;
+  height: 100%;
+  transition: transform 0.5s ease-in-out;
+}
+
+.carousel-slide {
+  min-width: 100%;
+  height: 100%;
+  position: relative;
+}
+
+.couple-story-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.carousel-arrow {
   position: absolute;
-  width: calc(100% - 30px);
-  height: calc(100% - 30px);
-  border: 2px solid rgba(255, 255, 255, 0.5);
-  top: 15px;
-  left: 15px;
-  z-index: 1;
-  border-radius: 5px;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 40px;
+  height: 40px;
+  background-color: rgba(255, 255, 255, 0.7);
+  border: none;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 18px;
+  color: var(--dark-text);
+  cursor: pointer;
+  opacity: 0.7;
+  transition: opacity 0.3s ease, background-color 0.3s ease;
+  z-index: 10;
+}
+
+.carousel-arrow:hover {
+  opacity: 1;
+  background-color: rgba(255, 255, 255, 0.9);
+}
+
+.carousel-arrow.prev {
+  left: 10px;
+}
+
+.carousel-arrow.next {
+  right: 10px;
+}
+
+.carousel-dots {
+  position: absolute;
+  bottom: 15px;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  gap: 8px;
+  z-index: 10;
+}
+
+.carousel-dot {
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  background-color: rgba(255, 255, 255, 0.5);
+  border: none;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.carousel-dot.active {
+  background-color: var(--gold);
+}
+
+/* Responsive styles for carousel */
+@media screen and (max-width: 960px) {
+  .intro-content {
+    flex-direction: column;
+    gap: 2rem;
+  }
+  
+  .intro-image {
+    width: 100%;
+    margin-right: 0;
+  }
+  
+  .carousel-container {
+    height: 350px;
+  }
+  
+  .carousel-arrow {
+    width: 35px;
+    height: 35px;
+    font-size: 16px;
+  }
+  
+  .carousel-dot {
+    width: 10px;
+    height: 10px;
+  }
+}
+
+@media screen and (max-width: 600px) {
+  .carousel-container {
+    height: 250px;
+  }
+  
+  .carousel-arrow {
+    width: 30px;
+    height: 30px;
+    font-size: 14px;
+  }
 }
 
 .intro-text {

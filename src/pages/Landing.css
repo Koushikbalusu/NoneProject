@@ -1,0 +1,513 @@
+.landing-page {
+  overflow-x: hidden;
+}
+
+/* Add decorative elements */
+.corner-decoration {
+  position: absolute;
+  width: 150px;
+  height: 150px;
+  background-size: contain;
+  background-repeat: no-repeat;
+  opacity: 0.8;
+  transition: all 0.5s ease;
+}
+
+.top-left {
+  top: 80px;
+  left: 30px;
+  background-image: url('/images/floral-corner.png');
+}
+
+.top-right {
+  top: 80px;
+  right: 30px;
+  background-image: url('/images/floral-corner.png');
+  transform: rotate(90deg);
+}
+
+.bottom-left {
+  bottom: 30px;
+  left: 30px;
+  background-image: url('/images/floral-corner.png');
+  transform: rotate(270deg);
+}
+
+.bottom-right {
+  bottom: 30px;
+  right: 30px;
+  background-image: url('/images/floral-corner.png');
+  transform: rotate(180deg);
+}
+
+.hero-section:hover .corner-decoration {
+  opacity: 1;
+}
+
+/* Hero Section */
+.hero-section {
+  height: 100vh;
+  background-image: url('/images/blush-watercolor-bg.jpg');
+  background-size: cover;
+  background-position: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 0 2rem;
+  position: relative;
+  margin-top: 70px; /* Match navbar height */
+  overflow: hidden;
+}
+
+/* Add a subtle overlay */
+.hero-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: radial-gradient(circle, rgba(255,255,255,0) 0%, rgba(255,248,231,0.3) 100%);
+  z-index: 1;
+}
+
+.hero-content {
+  position: relative;
+  z-index: 10;
+  background-color: rgba(255, 255, 255, 0.85);
+  padding: 3rem 4rem;
+  border-radius: 10px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+  max-width: 800px;
+  margin: 0 auto;
+  
+}
+
+.hero-content:before,
+.hero-content:after {
+  content: '';
+  position: absolute;
+  width: calc(100% - 40px);
+  height: calc(100% - 40px);
+  border: 1px solid var(--gold);
+  top: 20px;
+  left: 20px;
+  z-index: -1;
+  border-radius: 5px;
+}
+
+.hero-content:after {
+  transform: rotate(2deg);
+}
+
+.invitation-intro {
+  font-size: 24px;
+  margin-bottom: 1.5rem;
+  color: var(--dark-text);
+  font-weight: 400;
+  font-style: italic;
+}
+
+.couple-names {
+  font-size: 48px;
+  margin-bottom: 1.5rem;
+  font-weight: 700;
+  color: var(--dark-text);
+  position: relative;
+  display: inline-block;
+}
+
+.couple-names:after {
+  content: '';
+  position: absolute;
+  width: 80px;
+  height: 3px;
+  background-color: var(--gold);
+  bottom: -10px;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+.invitation-text {
+  font-size: 22px;
+  margin-bottom: 2.5rem;
+  font-style: italic;
+  color: var(--dark-text);
+}
+
+.wedding-date {
+  font-size: 22px;
+  margin-bottom: 0.5rem;
+  font-family: 'Lato', sans-serif;
+  letter-spacing: 2px;
+  color: var(--dark-text);
+  font-weight: 600;
+}
+
+.wedding-venue {
+  font-size: 20px;
+  margin-bottom: 2rem;
+  font-family: 'Lato', sans-serif;
+  color: var(--dark-text);
+  font-weight: 600;
+}
+
+/* New button container and button styles */
+.button-container {
+  margin: 2rem 0 1rem;
+  position: relative;
+  z-index: 20;
+  /* Override the animate-on-load properties to ensure visibility */
+  opacity: 1 !important;
+  transform: translateY(0) !important;
+}
+
+.ceremony-button {
+  display: inline-block;
+  background-color: var(--gold);
+  color: white;
+  padding: 1rem 2.5rem;
+  border-radius: 30px;
+  font-size: 18px;
+  font-weight: 600;
+  text-decoration: none;
+  box-shadow: 0 4px 15px rgba(184, 134, 11, 0.3);
+  transition: all 0.3s ease;
+  position: relative;
+  z-index: 20;
+}
+
+.ceremony-button:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 25px rgba(184, 134, 11, 0.4);
+  background-color: #d4af37;
+}
+
+/* Make sure the button is visible with proper z-index */
+.hero-content {
+  max-width: 800px;
+  z-index: 2;
+  background-color: rgba(255, 255, 255, 0.8);
+  padding: 3rem 4rem 4rem 4rem; /* Increased bottom padding */
+  border-radius: 10px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+  position: relative;
+}
+
+/* Scroll Arrow Animation */
+.scroll-arrow {
+  position: absolute;
+  bottom: 40px;
+  left: 50%;
+  transform: translateX(-50%);
+  cursor: pointer;
+  opacity: 1;
+  transition: opacity 0.3s ease;
+  z-index: 10;
+  background-color: rgba(255, 255, 255, 0.7);
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+.scroll-arrow.hidden {
+  opacity: 0;
+  pointer-events: none;
+}
+
+.scroll-arrow span {
+  display: block;
+  width: 20px;
+  height: 20px;
+  border-bottom: 2px solid var(--dark-text);
+  border-right: 2px solid var(--dark-text);
+  transform: rotate(45deg);
+  margin: -10px;
+  animation: scrollArrow 2s infinite;
+}
+
+.scroll-arrow span:nth-child(2) {
+  animation-delay: -0.2s;
+}
+
+.scroll-arrow span:nth-child(3) {
+  animation-delay: -0.4s;
+}
+
+@keyframes scrollArrow {
+  0% {
+    opacity: 0;
+    transform: rotate(45deg) translate(-20px, -20px);
+  }
+  50% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+    transform: rotate(45deg) translate(20px, 20px);
+  }
+}
+
+/* Animation for elements */
+.animate-on-load {
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 0.5s ease, transform 0.5s ease;
+}
+
+.animate-on-load.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Intro Section */
+.intro-section {
+  padding: 8rem 2rem;
+  background-color: white;
+  position: relative;
+  overflow: hidden;
+}
+
+.intro-section:before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-image: url('/images/subtle-pattern.png');
+  opacity: 0.05;
+  z-index: 0;
+}
+
+.intro-content {
+  display: flex;
+  align-items: center;
+  gap: 5rem;
+  position: relative;
+  z-index: 1;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.intro-image {
+  flex: 1;
+  position: relative;
+}
+
+.image-placeholder {
+  width: 100%;
+  height: 450px;
+  background-color: var(--blush-pink);
+  border-radius: 10px;
+  position: relative;
+  overflow: hidden;
+  box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
+  transition: all 0.5s ease;
+}
+
+.image-placeholder:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
+}
+
+.image-placeholder:before {
+  content: '';
+  position: absolute;
+  width: calc(100% - 30px);
+  height: calc(100% - 30px);
+  border: 2px solid rgba(255, 255, 255, 0.5);
+  top: 15px;
+  left: 15px;
+  z-index: 1;
+  border-radius: 5px;
+}
+
+.intro-text {
+  flex: 1;
+}
+
+.intro-text h2 {
+  font-size: 3rem;
+  margin-bottom: 2rem;
+  position: relative;
+  color: var(--dark-text);
+}
+
+.intro-text h2:after {
+  content: '';
+  position: absolute;
+  width: 80px;
+  height: 3px;
+  background-color: var(--gold);
+  bottom: -15px;
+  left: 0;
+}
+
+.intro-text p {
+  margin-bottom: 2rem;
+  line-height: 1.9;
+  font-size: 1.1rem;
+  color: var(--light-text);
+}
+
+.read-more {
+  display: inline-block;
+  color: var(--dark-text);
+  font-weight: 600;
+  text-decoration: none;
+  transition: all 0.3s ease;
+  padding: 0.5rem 0;
+  position: relative;
+}
+
+.read-more:after {
+  content: '';
+  position: absolute;
+  width: 0;
+  height: 2px;
+  bottom: 0;
+  left: 0;
+  background-color: var(--gold);
+  transition: width 0.3s ease;
+}
+
+.read-more:hover {
+  color: var(--gold);
+}
+
+.read-more:hover:after {
+  width: 100%;
+}
+
+/* Event Preview Section */
+.event-preview {
+  padding: 6rem 2rem;
+  background-color: var(--ivory);
+  text-align: center;
+}
+
+.event-preview h2 {
+  font-size: 2.5rem;
+  margin-bottom: 3rem;
+  position: relative;
+  display: inline-block;
+}
+
+.event-preview h2:after {
+  content: '';
+  position: absolute;
+  width: 60px;
+  height: 3px;
+  background-color: var(--gold);
+  bottom: -10px;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+.event-cards {
+  display: flex;
+  justify-content: center;
+  gap: 2rem;
+  margin-top: 2rem;
+}
+
+.event-card {
+  background-color: white;
+  padding: 2rem;
+  border-radius: 10px;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+  flex: 1;
+  max-width: 350px;
+  transition: all 0.3s ease;
+}
+
+.event-card:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
+}
+
+.event-card h3 {
+  font-size: 1.5rem;
+  margin-bottom: 0.5rem;
+}
+
+.event-date {
+  color: var(--gold);
+  font-weight: 600;
+  margin-bottom: 1rem;
+}
+
+.event-card p {
+  margin-bottom: 1.5rem;
+}
+
+.event-card .btn {
+  margin-top: 1rem;
+}
+
+/* Responsive Styles */
+@media screen and (max-width: 960px) {
+  .couple-names {
+    font-size: 32px; /* Reduce size on smaller screens */
+  }
+  
+  .hero-section {
+    margin-top: 50px; /* Adjust space on smaller screens */
+  }
+  
+  .invitation-intro {
+    font-size: 20px;
+  }
+  
+  .invitation-text {
+    font-size: 18px;
+  }
+  
+  .wedding-date, .wedding-venue {
+    font-size: 18px;
+  }
+  
+  .intro-content {
+    flex-direction: column;
+    gap: 2rem;
+  }
+  
+  .event-cards {
+    flex-direction: column;
+    align-items: center;
+  }
+  
+  .event-card {
+    width: 100%;
+    max-width: 400px;
+  }
+}
+
+@media screen and (max-width: 600px) {
+  .couple-names {
+    font-size: 28px; /* Further reduce size on mobile */
+  }
+  
+  .invitation-intro {
+    font-size: 16px;
+  }
+  
+  .invitation-text {
+    font-size: 16px;
+  }
+  
+  .wedding-date, .wedding-venue {
+    font-size: 16px;
+  }
+  
+  .primary-btn {
+    padding: 0.8rem 1.5rem;
+    font-size: 16px;
+  }
+}

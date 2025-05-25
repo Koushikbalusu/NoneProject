@@ -1,0 +1,65 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/png" href="https://sdmntprwestus2.oaiusercontent.com/files/00000000-48a4-61f8-8d25-e216359c6afc/raw?se=2025-05-24T21%3A19%3A24Z&sp=r&sv=2024-08-04&sr=b&scid=159af1e8-7e39-5a74-8041-8779299c837e&skoid=c156db82-7a33-468f-9cdd-06af263ceec8&sktid=a48cca56-e6da-484e-a814-9c849652bcb3&skt=2025-05-24T19%3A48%3A09Z&ske=2025-05-25T19%3A48%3A09Z&sks=b&skv=2024-08-04&sig=CaMrCwdD%2Bf2htBauPl3MbkLsFIgYWP2fkwtb8uNERFI%3D" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Manasa & Brahma Reddy - Wedding Website</title>
+
+    <link rel="apple-touch-icon" href="https://sdmntprwestus2.oaiusercontent.com/files/00000000-48a4-61f8-8d25-e216359c6afc/raw?se=2025-05-24T21%3A19%3A24Z&sp=r&sv=2024-08-04&sr=b&scid=159af1e8-7e39-5a74-8041-8779299c837e&skoid=c156db82-7a33-468f-9cdd-06af263ceec8&sktid=a48cca56-e6da-484e-a814-9c849652bcb3&skt=2025-05-24T19%3A48%3A09Z&ske=2025-05-25T19%3A48%3A09Z&sks=b&skv=2024-08-04&sig=CaMrCwdD%2Bf2htBauPl3MbkLsFIgYWP2fkwtb8uNERFI%3D" />
+    
+    <!-- Add mask icon for Safari pinned tabs -->
+    <link rel="mask-icon" href="https://sdmntprwestus2.oaiusercontent.com/files/00000000-48a4-61f8-8d25-e216359c6afc/raw?se=2025-05-24T21%3A19%3A24Z&sp=r&sv=2024-08-04&sr=b&scid=159af1e8-7e39-5a74-8041-8779299c837e&skoid=c156db82-7a33-468f-9cdd-06af263ceec8&sktid=a48cca56-e6da-484e-a814-9c849652bcb3&skt=2025-05-24T19%3A48%3A09Z&ske=2025-05-25T19%3A48%3A09Z&sks=b&skv=2024-08-04&sig=CaMrCwdD%2Bf2htBauPl3MbkLsFIgYWP2fkwtb8uNERFI%3D" color="#FFD700" />
+    
+    <!-- Add a script to create a circular favicon dynamically -->
+    <script>
+      // Create a circular favicon dynamically
+      window.addEventListener('load', function() {
+        const faviconUrl = 'https://sdmntprwestus2.oaiusercontent.com/files/00000000-48a4-61f8-8d25-e216359c6afc/raw?se=2025-05-24T21%3A19%3A24Z&sp=r&sv=2024-08-04&sr=b&scid=159af1e8-7e39-5a74-8041-8779299c837e&skoid=c156db82-7a33-468f-9cdd-06af263ceec8&sktid=a48cca56-e6da-484e-a814-9c849652bcb3&skt=2025-05-24T19%3A48%3A09Z&ske=2025-05-25T19%3A48%3A09Z&sks=b&skv=2024-08-04&sig=CaMrCwdD%2Bf2htBauPl3MbkLsFIgYWP2fkwtb8uNERFI%3D';
+        
+        // Create an image element to load the favicon
+        const img = new Image();
+        img.crossOrigin = 'Anonymous';
+        
+        img.onload = function() {
+          // Create a canvas to draw the circular image
+          const canvas = document.createElement('canvas');
+          const size = 32; // Standard favicon size
+          canvas.width = size;
+          canvas.height = size;
+          const ctx = canvas.getContext('2d');
+          
+          // Draw a circular clipping path
+          ctx.beginPath();
+          ctx.arc(size/2, size/2, size/2, 0, Math.PI * 2, true);
+          ctx.closePath();
+          ctx.clip();
+          
+          // Draw the image inside the circle
+          ctx.drawImage(img, 0, 0, size, size);
+          
+          // Create a new favicon link element
+          const link = document.createElement('link');
+          link.type = 'image/x-icon';
+          link.rel = 'shortcut icon';
+          link.href = canvas.toDataURL('image/png');
+          
+          // Remove existing favicon
+          const oldLink = document.querySelector('link[rel="icon"]');
+          if (oldLink) {
+            document.head.removeChild(oldLink);
+          }
+          
+          // Add the new circular favicon
+          document.head.appendChild(link);
+        };
+        
+        img.src = faviconUrl;
+      });
+    </script>
+  </head>
+  <body>
+    <div id="root"></div>
+    <script type="module" src="/src/main.jsx"></script>
+  </body>
+</html>

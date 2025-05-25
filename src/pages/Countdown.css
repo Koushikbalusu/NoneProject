@@ -1,0 +1,470 @@
+/* Countdown Timer */
+.countdown-timer {
+  position: sticky;
+  top: 80px;
+  z-index: 100;
+  background: linear-gradient(135deg, #f8f9fa, #e9ecef);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+  padding: 2rem 0;
+  margin-top: 80px;
+  border-bottom: 3px solid #FFD700;
+}
+
+.countdown-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  text-align: center;
+  padding: 0 2rem;
+}
+
+.countdown-container h2 {
+  font-size: 1.8rem;
+  margin-bottom: 1.5rem;
+  font-weight: 600;
+  color: #8B4513;
+  font-family: 'Playfair Display', serif;
+  position: relative;
+  display: inline-block;
+}
+
+.countdown-container h2:after {
+  content: '';
+  position: absolute;
+  width: 60px;
+  height: 3px;
+  background-color: #FFD700;
+  bottom: -8px;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+.timer-display {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 1rem;
+  margin-bottom: 1rem;
+}
+
+.time-block {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  min-width: 100px;
+  position: relative;
+}
+
+.time-circle {
+  width: 90px;
+  height: 90px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 0.5rem;
+  position: relative;
+  overflow: hidden;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+}
+
+.time-circle:before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  border-radius: 50%;
+  padding: 3px;
+  background: linear-gradient(135deg, #FFD700, #FFA500);
+  -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+  -webkit-mask-composite: xor;
+  mask-composite: exclude;
+}
+
+.days .time-circle {
+  background: linear-gradient(135deg, #fff, #f8f9fa);
+}
+
+.hours .time-circle {
+  background: linear-gradient(135deg, #fff, #f8f9fa);
+}
+
+.minutes .time-circle {
+  background: linear-gradient(135deg, #fff, #f8f9fa);
+}
+
+.seconds .time-circle {
+  background: linear-gradient(135deg, #fff, #f8f9fa);
+}
+
+.seconds .time-circle:before {
+  background: linear-gradient(135deg, #FFD700, #FF4500);
+}
+
+.time-value {
+  font-size: 2.5rem;
+  font-weight: 700;
+  color: #8B4513;
+  font-family: 'Lato', sans-serif;
+  position: relative;
+  z-index: 2;
+}
+
+.time-label {
+  font-size: 1rem;
+  font-weight: 600;
+  color: #6B8E23;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.time-separator {
+  font-size: 2.5rem;
+  font-weight: 700;
+  color: #FFD700;
+  margin-top: -1.5rem;
+}
+
+.wedding-date-display {
+  margin-top: 1.5rem;
+  background: linear-gradient(135deg, rgba(255, 215, 0, 0.2), rgba(255, 165, 0, 0.2));
+  display: inline-block;
+  padding: 0.8rem 2rem;
+  border-radius: 30px;
+  border: 1px solid #FFD700;
+}
+
+.wedding-date {
+  font-size: 1.2rem;
+  font-weight: 600;
+  color: #8B4513;
+  margin-right: 1rem;
+}
+
+.wedding-time {
+  font-size: 1.2rem;
+  font-weight: 600;
+  color: #8B4513;
+  position: relative;
+}
+
+.wedding-time:before {
+  content: '•';
+  position: absolute;
+  left: -0.7rem;
+  color: #FFD700;
+}
+
+/* Add animation for seconds */
+@keyframes pulse {
+  0% { transform: scale(1); }
+  50% { transform: scale(1.05); }
+  100% { transform: scale(1); }
+}
+
+.seconds .time-circle {
+  animation: pulse 1s infinite;
+}
+
+/* Countdown Content */
+.countdown-content {
+  padding: 3rem 2rem;
+}
+
+/* Timeline Section */
+.timeline-section {
+  margin-bottom: 4rem;
+}
+
+.timeline-section h2 {
+  text-align: center;
+  margin-bottom: 3rem;
+  font-size: 2rem;
+  position: relative;
+}
+
+.timeline-section h2:after {
+  content: '';
+  position: absolute;
+  width: 60px;
+  height: 3px;
+  background-color: var(--gold);
+  bottom: -10px;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+.timeline-container {
+  display: flex;
+  justify-content: space-between;
+  position: relative;
+  max-width: 900px;
+  margin: 0 auto;
+}
+
+.timeline-container:before {
+  content: '';
+  position: absolute;
+  top: 50px;
+  left: 0;
+  width: 100%;
+  height: 2px;
+  background-color: #e0e0e0;
+  z-index: 1;
+}
+
+.timeline-step {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  position: relative;
+  z-index: 2;
+  flex: 1;
+}
+
+.timeline-icon {
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  background-color: #f0f0f0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.5rem;
+  margin-bottom: 1rem;
+  border: 2px solid #e0e0e0;
+  transition: all 0.3s ease;
+}
+
+.timeline-step.active .timeline-icon {
+  background-color: var(--mint-green);
+  border-color: var(--mint-green);
+  transform: scale(1.1);
+  box-shadow: 0 0 15px rgba(209, 231, 221, 0.5);
+}
+
+.timeline-step.completed .timeline-icon {
+  background-color: var(--blush-pink);
+  border-color: var(--blush-pink);
+}
+
+.timeline-content {
+  text-align: center;
+  max-width: 150px;
+}
+
+.timeline-content h3 {
+  font-size: 1rem;
+  margin-bottom: 0.5rem;
+  color: var(--dark-text);
+}
+
+.timeline-content p {
+  font-size: 0.8rem;
+  color: var(--light-text);
+  margin: 0;
+}
+
+.timeline-step.active .timeline-content h3 {
+  color: var(--mint-green);
+  font-weight: 700;
+}
+
+/* Event Details Section */
+.event-details {
+  margin-bottom: 4rem;
+}
+
+.event-details h2 {
+  text-align: center;
+  margin-bottom: 3rem;
+  font-size: 2rem;
+  position: relative;
+}
+
+.event-details h2:after {
+  content: '';
+  position: absolute;
+  width: 60px;
+  height: 3px;
+  background-color: var(--gold);
+  bottom: -10px;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+.event-cards {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+  gap: 2rem;
+}
+
+.event-card {
+  background-color: white;
+  border-radius: 10px;
+  padding: 2rem;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+  text-align: center;
+  transition: all 0.3s ease;
+}
+
+.event-card:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
+}
+
+.event-icon {
+  font-size: 2rem;
+  margin-bottom: 1rem;
+}
+
+.event-card h3 {
+  font-size: 1.5rem;
+  margin-bottom: 0.5rem;
+}
+
+.event-date {
+  color: var(--gold);
+  font-weight: 600;
+  margin-bottom: 0.5rem;
+}
+
+.event-time {
+  color: var(--light-text);
+  margin-bottom: 1rem;
+}
+
+.event-description {
+  margin-bottom: 1.5rem;
+  line-height: 1.6;
+}
+
+/* Venue Section */
+.venue-section h2 {
+  text-align: center;
+  margin-bottom: 3rem;
+  font-size: 2rem;
+  position: relative;
+}
+
+.venue-section h2:after {
+  content: '';
+  position: absolute;
+  width: 60px;
+  height: 3px;
+  background-color: var(--gold);
+  bottom: -10px;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+.venue-container {
+  display: flex;
+  gap: 3rem;
+  align-items: center;
+}
+
+.venue-map {
+  flex: 1;
+}
+
+.map-placeholder {
+  width: 100%;
+  height: 300px;
+  background-color: #f0f0f0;
+  border-radius: 10px;
+}
+
+.venue-details {
+  flex: 1;
+}
+
+.venue-details h3 {
+  font-size: 1.8rem;
+  margin-bottom: 1rem;
+}
+
+.venue-details p {
+  margin-bottom: 1rem;
+  line-height: 1.6;
+}
+
+/* Animation */
+.fade-in-section {
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+  will-change: opacity, transform;
+}
+
+.fade-in-section.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Responsive Styles */
+@media screen and (max-width: 960px) {
+  .countdown-timer {
+    top: 60px;
+    margin-top: 60px;
+    padding: 1.5rem 0;
+  }
+  
+  .countdown-container h2 {
+    font-size: 1.5rem;
+  }
+  
+  .time-circle {
+    width: 70px;
+    height: 70px;
+  }
+  
+  .time-value {
+    font-size: 2rem;
+  }
+  
+  .time-block {
+    min-width: 80px;
+  }
+  
+  .time-separator {
+    font-size: 2rem;
+  }
+}
+
+@media screen and (max-width: 600px) {
+  .countdown-container h2 {
+    font-size: 1.2rem;
+  }
+  
+  .time-circle {
+    width: 60px;
+    height: 60px;
+  }
+  
+  .time-value {
+    font-size: 1.5rem;
+  }
+  
+  .time-label {
+    font-size: 0.8rem;
+  }
+  
+  .time-block {
+    min-width: 60px;
+  }
+  
+  .time-separator {
+    font-size: 1.5rem;
+    margin-top: -1rem;
+  }
+  
+  .wedding-date, .wedding-time {
+    font-size: 1rem;
+  }
+  
+  .timer-display {
+    gap: 0.5rem;
+  }
+}

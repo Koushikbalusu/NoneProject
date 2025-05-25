@@ -1,0 +1,717 @@
+.haldi-page {
+  overflow-x: hidden;
+}
+
+/* Completely New Hero Section Design */
+.hero-section {
+  height: 100%;
+  position: relative;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #FFF8DC;
+  padding-top: 100px; /* Add padding to account for navbar height */
+  box-sizing: border-box; /* Ensure padding is included in height calculation */
+  min-height: 700px; /* Ensure minimum height for smaller screens */
+  padding-bottom: 20px; /* Add bottom padding for content spacing */
+}
+
+.hero-background {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 1;
+}
+
+.hero-pattern {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-image: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23FFD700' fill-opacity='0.1'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+  opacity: 0.5;
+}
+
+.hero-glow {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 80%;
+  height: 80%;
+  background: radial-gradient(circle, rgba(255,215,0,0.3) 0%, rgba(255,215,0,0) 70%);
+  filter: blur(30px);
+}
+
+.hero-container {
+  position: relative;
+  z-index: 2;
+  width: 100%;
+  max-width: 1200px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 0 2rem;
+  padding-bottom: 50px; /* Add bottom padding */
+}
+
+.ceremony-emblem {
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+  background: linear-gradient(45deg, #FFD700, #FFA500);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 1.5rem;
+  box-shadow: 0 10px 30px rgba(255, 215, 0, 0.5);
+  position: relative;
+}
+
+.ceremony-emblem:before {
+  content: '';
+  position: absolute;
+  top: -10px;
+  left: -10px;
+  right: -10px;
+  bottom: -10px;
+  border-radius: 50%;
+  border: 2px dashed #FFD700;
+  animation: rotate 20s linear infinite;
+}
+
+.emblem-inner {
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+  background: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.emblem-icon {
+  font-size: 3rem;
+  color: #FFD700;
+}
+
+.hero-title-container {
+  text-align: center;
+  margin-bottom: 1.5rem;
+}
+
+.hero-title {
+  font-size: 5rem;
+  font-weight: 800;
+  color: #B8860B;
+  margin: 0;
+  line-height: 1;
+  letter-spacing: 5px;
+  text-transform: uppercase;
+  background: linear-gradient(45deg, #B8860B, #FFD700);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  text-shadow: 3px 3px 6px rgba(0,0,0,0.1);
+}
+
+.hero-date {
+  font-size: 1.5rem;
+  font-weight: 500;
+  color: #8B4513;
+  margin-top: 0.5rem;
+  letter-spacing: 3px;
+}
+
+.couple-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 1.5rem;
+  width: 100%;
+}
+
+.couple-photo-left, .couple-photo-right {
+  width: 120px;
+  height: 120px;
+  border-radius: 50%;
+  background-size: cover;
+  background-position: center;
+  border: 5px solid white;
+  box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+}
+
+.couple-photo-left {
+  background-image: url('/images/bride.jpg');
+  transform: translateX(20px);
+  z-index: 1;
+}
+
+.couple-photo-right {
+  background-image: url('/images/groom.jpg');
+  transform: translateX(-20px);
+  z-index: 1;
+}
+
+.couple-names {
+  background: white;
+  padding: 1.5rem 3rem;
+  border-radius: 50px;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  z-index: 2;
+}
+
+.name-left, .name-right {
+  font-size: 1.8rem;
+  font-weight: 600;
+  color: #8B4513;
+}
+
+.name-connector {
+  font-size: 2.5rem;
+  color: #FFD700;
+  margin: 0.5rem 0;
+  font-family: 'Playfair Display', serif;
+  font-style: italic;
+}
+
+.hero-description {
+  text-align: center;
+  max-width: 600px;
+}
+
+.hero-description p {
+  font-size: 1.3rem;
+  color: #8B4513;
+  margin-bottom: 2rem;
+  line-height: 1.6;
+}
+
+.scroll-down-btn {
+  display: none;
+}
+
+.scroll-down-btn svg {
+  margin-top: 0.5rem;
+  fill: #8B4513;
+  animation: bounce 2s infinite;
+}
+
+@keyframes bounce {
+  0%, 20%, 50%, 80%, 100% {
+    transform: translateY(0);
+  }
+  40% {
+    transform: translateY(-10px);
+  }
+  60% {
+    transform: translateY(-5px);
+  }
+}
+
+@keyframes rotate {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+/* Media Queries */
+@media screen and (max-width: 768px) {
+  .hero-section {
+    padding-top: 80px;
+  }
+  
+  .hero-title {
+    font-size: 3.5rem;
+  }
+  
+  .ceremony-emblem {
+    width: 80px;
+    height: 80px;
+  }
+  
+  .emblem-inner {
+    width: 60px;
+    height: 60px;
+  }
+}
+
+@media screen and (max-width: 576px) {
+  .hero-section {
+    padding-top: 60px;
+  }
+  
+  .hero-title {
+    font-size: 2.5rem;
+  }
+  
+  .couple-photo-left, .couple-photo-right {
+    width: 80px;
+    height: 80px;
+  }
+  
+  .couple-names {
+    padding: 0.8rem 1.5rem;
+  }
+  
+  .name-left, .name-right {
+    font-size: 1rem;
+  }
+  
+  .name-connector {
+    font-size: 1.5rem;
+  }
+  
+  .hero-description p {
+    font-size: 0.9rem;
+    margin-bottom: 1rem;
+  }
+}
+
+/* Decorative elements */
+.decorative-element {
+  position: absolute;
+  width: 150px;
+  height: 150px;
+  background-size: contain;
+  background-repeat: no-repeat;
+  opacity: 0.8;
+  z-index: 2;
+}
+
+.top-left {
+  top: 50px;
+  left: 50px;
+  background-image: url('/images/haldi-decoration.png');
+  transform: rotate(-15deg);
+}
+
+.top-right {
+  top: 50px;
+  right: 50px;
+  background-image: url('/images/haldi-decoration.png');
+  transform: rotate(15deg);
+}
+
+/* Invitation Section */
+.invitation-section {
+  padding: 7rem 2rem;
+  background: linear-gradient(to bottom, white, #FFFDF0);
+}
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.invitation-card {
+  background-color: white;
+  border-radius: 20px;
+  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.15);
+  overflow: hidden;
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 4rem;
+  text-align: center;
+  position: relative;
+  overflow: visible;
+  border: 1px solid rgba(255, 215, 0, 0.3);
+}
+
+.invitation-card:before {
+  content: '';
+  position: absolute;
+  top: -15px;
+  left: -15px;
+  right: -15px;
+  bottom: -15px;
+  border: 2px dashed #FFD700;
+  border-radius: 25px;
+  z-index: -1;
+}
+
+.card-header {
+  margin-bottom: 3.5rem;
+}
+
+.haldi-icon {
+  font-size: 4rem;
+  margin-bottom: 1.5rem;
+  color: #FFD700;
+}
+
+.card-header h2 {
+  font-size: 3rem;
+  margin-bottom: 1rem;
+  color: var(--dark-text);
+}
+
+.card-header h3 {
+  font-size: 2.5rem;
+  color: #B8860B;
+  margin-top: 1.5rem;
+  position: relative;
+  display: inline-block;
+}
+
+.card-header h3:after {
+  content: '';
+  position: absolute;
+  width: 70%;
+  height: 3px;
+  background-color: #FFD700;
+  bottom: -10px;
+  left: 15%;
+}
+
+.card-details {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 3rem;
+  margin-bottom: 3.5rem;
+}
+
+.detail-item {
+  display: flex;
+  align-items: flex-start;
+  text-align: left;
+  transition: transform 0.3s ease;
+}
+
+.detail-item:hover {
+  transform: translateY(-10px);
+}
+
+.detail-icon {
+  font-size: 2.5rem;
+  margin-right: 1.5rem;
+  color: #FFD700; /* Gold color for icons */
+}
+
+.detail-content h4 {
+  font-size: 1.2rem;
+  margin-bottom: 0.5rem;
+  color: var(--dark-text);
+}
+
+.detail-content p {
+  color: var(--light-text);
+}
+
+.venue-map {
+  width: 100%;
+  margin: 2rem 0;
+  background-color: white;
+  border-radius: 15px;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+  overflow: hidden;
+  padding: 1rem;
+}
+
+.map-details {
+  padding: 1.5rem;
+  text-align: center;
+}
+
+.map-details h4 {
+  font-size: 1.5rem;
+  color: #8B4513;
+  margin-bottom: 0.5rem;
+}
+
+.map-details p {
+  font-size: 1.1rem;
+  color: #666;
+  margin-bottom: 1.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.venue-icon {
+  font-size: 1.5rem;
+  margin-right: 0.5rem;
+  color: #FFD700;
+}
+
+.btn {
+  display: inline-block;
+  padding: 0.8rem 2rem;
+  background-color: #FFD700;
+  color: #8B4513;
+  border-radius: 30px;
+  text-decoration: none;
+  font-weight: 600;
+  transition: all 0.3s ease;
+  border: none;
+  cursor: pointer;
+}
+
+.btn:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 5px 15px rgba(255, 215, 0, 0.3);
+}
+
+/* Enhanced Info Section */
+.info-section {
+  padding: 7rem 2rem;
+  background: linear-gradient(135deg, #FFFDF0, #FFF8E0);
+  position: relative;
+}
+
+.info-section:before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-image: url('/images/haldi-pattern.png');
+  background-size: 300px;
+  opacity: 0.05;
+}
+
+.section-title {
+  font-size: 2.5rem;
+  text-align: center;
+  margin-bottom: 1.5rem;
+  color: var(--dark-text);
+}
+
+.section-description {
+  max-width: 800px;
+  margin: 0 auto 3rem;
+  text-align: center;
+  line-height: 1.8;
+  color: var(--light-text);
+}
+
+.flip-cards-container {
+  max-width: 1000px;
+  margin: 0 auto;
+  text-align: center;
+}
+
+.flip-cards-container h3 {
+  font-size: 1.8rem;
+  margin-bottom: 2rem;
+  color: var(--dark-text);
+}
+
+.flip-cards {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 3rem;
+}
+
+.flip-card {
+  background-color: transparent;
+  width: 100%;
+  height: 280px;
+  perspective: 1500px;
+  cursor: pointer;
+}
+
+.flip-card-inner {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  text-align: center;
+  transition: transform 0.6s;
+  transform-style: preserve-3d;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+}
+
+.flip-card.flipped .flip-card-inner {
+  transform: rotateY(180deg);
+}
+
+.flip-card-front, .flip-card-back {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  -webkit-backface-visibility: hidden;
+  backface-visibility: hidden;
+  border-radius: 20px;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 2.5rem;
+}
+
+.flip-card-front {
+  background: linear-gradient(135deg, white, #FFFDF0);
+  border: 1px solid rgba(255, 215, 0, 0.3);
+}
+
+.flip-card-back {
+  background: linear-gradient(135deg, #FFD700, #FFC800);
+  color: var(--dark-text);
+  transform: rotateY(180deg);
+}
+
+.card-icon {
+  font-size: 3.5rem;
+  margin-bottom: 1.5rem;
+  color: #B8860B;
+}
+
+.flip-card-front h4 {
+  font-size: 1.5rem;
+  margin-bottom: 1rem;
+  color: var(--dark-text);
+}
+
+.flip-card-front p {
+  color: var(--light-text);
+  font-size: 0.9rem;
+}
+
+.flip-card-back h4 {
+  font-size: 1.5rem;
+  margin-bottom: 1rem;
+}
+
+.flip-card-back p {
+  line-height: 1.6;
+}
+
+/* Enhanced RSVP Section */
+.rsvp-section {
+  padding: 7rem 2rem;
+  background: linear-gradient(135deg, #FFD700, #FFC107);
+  position: relative;
+  overflow: hidden;
+}
+
+.rsvp-section:before {
+  content: '';
+  position: absolute;
+  top: -50px;
+  right: -50px;
+  width: 200px;
+  height: 200px;
+  background-image: url('/images/haldi-flower.png');
+  background-size: contain;
+  background-repeat: no-repeat;
+  opacity: 0.2;
+  transform: rotate(45deg);
+}
+
+.rsvp-section:after {
+  content: '';
+  position: absolute;
+  bottom: -50px;
+  left: -50px;
+  width: 200px;
+  height: 200px;
+  background-image: url('/images/haldi-flower.png');
+  background-size: contain;
+  background-repeat: no-repeat;
+  opacity: 0.2;
+  transform: rotate(-135deg);
+}
+
+.rsvp-content {
+  max-width: 600px;
+  margin: 0 auto;
+  position: relative;
+  z-index: 2;
+}
+
+.rsvp-content h2 {
+  font-size: 3rem;
+  margin-bottom: 1.5rem;
+  color: #8B4513;
+}
+
+.rsvp-content p {
+  margin-bottom: 2rem;
+  color: var(--dark-text);
+}
+
+.rsvp-content .btn {
+  background-color: white;
+  color: #B8860B;
+  font-weight: 700;
+  padding: 1rem 3rem;
+  font-size: 1.2rem;
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+}
+
+.rsvp-content .btn:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 15px 30px rgba(0, 0, 0, 0.15);
+}
+
+/* Enhanced animations */
+@keyframes float {
+  0% { transform: translateY(0px); }
+  50% { transform: translateY(-10px); }
+  100% { transform: translateY(0px); }
+}
+
+.float-animation {
+  animation: float 4s ease-in-out infinite;
+}
+
+/* Responsive Styles */
+@media screen and (max-width: 960px) {
+  .hero-content h1 {
+    font-size: 2.5rem;
+  }
+  
+  .hero-content p {
+    font-size: 1.2rem;
+  }
+  
+  .invitation-card {
+    padding: 2rem;
+  }
+  
+  .card-details {
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+  }
+}
+
+@media screen and (max-width: 600px) {
+  .hero-section {
+    height: 50vh;
+  }
+  
+  .hero-content h1 {
+    font-size: 2rem;
+  }
+  
+  .hero-content p {
+    font-size: 1rem;
+  }
+  
+  .card-header h2 {
+    font-size: 2rem;
+  }
+  
+  .card-header h3 {
+    font-size: 1.5rem;
+  }
+  
+  .flip-cards {
+    grid-template-columns: 1fr;
+  }
+  
+  .section-title {
+    font-size: 2rem;
+  }
+}

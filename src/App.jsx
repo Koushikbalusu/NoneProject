@@ -41,39 +41,35 @@ function App() {
         return newProgress >= 100 ? 100 : newProgress;
       });
     }, 600);
-    
+
     // Complete loading after animation finishes
     setTimeout(() => {
       clearInterval(interval);
       setLoadingProgress(100);
-      
+
       // Add fade-out class before removing loader
       const loaderContainer = document.querySelector('.loader-container');
       if (loaderContainer) {
         loaderContainer.classList.add('fade-out');
       }
-      
+
       setTimeout(() => setIsLoading(false), 1200); // Longer, more graceful exit
     }, 3000); // Extended slightly for more complete animation experience
-    
-    // Show welcome modal after loading
+
+    // Show welcome modal after loading - ALWAYS show on home page reload
     const modalTimer = setTimeout(() => {
-      // Check if user has already seen the modal in this session
-      const hasSeenModal = sessionStorage.getItem('hasSeenWelcomeModal')
-      
-      if (!hasSeenModal) {
+      // Only show modal if we're on the home page
+      if (window.location.pathname === '/' || window.location.pathname === '') {
         setShowWelcomeModal(true)
-        // Mark that user has seen the modal in this session
-        sessionStorage.setItem('hasSeenWelcomeModal', 'true')
       }
-    }, isFirstVisit ? 10000 : 10000)
-    
-    
+    }, 4500) // Show after loading completes
+
+
     return () => {
       clearTimeout(modalTimer)
       clearInterval(interval)
     }
-  }, [isFirstVisit])
+  }, []) // Remove isFirstVisit dependency to trigger on every reload
 
   const handleCloseModal = () => {
     setShowWelcomeModal(false)

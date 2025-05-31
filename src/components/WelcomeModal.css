@@ -4,8 +4,8 @@
   left: 0;
   right: 0;
   bottom: 0;
-  background-color: rgba(0, 0, 0, 0.7);
-  backdrop-filter: blur(5px);
+  background-color: rgba(44, 44, 44, 0.8);
+  backdrop-filter: blur(12px);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -14,39 +14,44 @@
 }
 
 .welcome-modal-content {
-  background-color: white;
-  border-radius: 20px;
+  background: var(--pure-white);
+  border-radius: 24px;
   width: 90%;
   max-width: 800px;
   max-height: 90vh;
   overflow: hidden;
   position: relative;
-  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+  box-shadow: 0 32px 80px rgba(44, 44, 44, 0.25);
   animation: slideUp 0.5s ease-out;
+  border: 1px solid rgba(255, 255, 255, 0.2);
 }
 
 .welcome-modal-close {
   position: absolute;
-  top: 15px;
-  right: 15px;
-  background: rgba(255, 255, 255, 0.9);
+  top: 20px;
+  right: 20px;
+  background: rgba(255, 255, 255, 0.95);
+  backdrop-filter: blur(10px);
   border: none;
   border-radius: 50%;
-  width: 40px;
-  height: 40px;
-  font-size: 24px;
+  width: 44px;
+  height: 44px;
+  font-size: 20px;
   display: flex;
   align-items: center;
   justify-content: center;
   cursor: pointer;
   z-index: 10;
-  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-  transition: all 0.3s ease;
+  box-shadow: 0 4px 16px rgba(44, 44, 44, 0.15);
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  color: var(--charcoal-text);
 }
 
 .welcome-modal-close:hover {
-  background: white;
-  transform: scale(1.1);
+  background: var(--primary-sage);
+  color: var(--pure-white);
+  transform: scale(1.05);
+  box-shadow: 0 8px 24px rgba(107, 142, 107, 0.3);
 }
 
 .welcome-modal-header {
@@ -61,15 +66,17 @@
 .welcome-modal-header h2 {
   font-family: 'Playfair Display', serif;
   font-size: 1.8rem;
-  color: var(--dark-text);
+  color: var(--charcoal-text);
   margin: 0;
   padding: 0 2rem;
+  font-weight: 600;
 }
 
 .welcome-modal-decoration {
   width: 60px;
-  height: 2px;
-  background: linear-gradient(to right, transparent, var(--gold), transparent);
+  height: 3px;
+  background: linear-gradient(to right, transparent, var(--refined-gold), var(--secondary-terracotta), transparent);
+  border-radius: 2px;
 }
 
 .welcome-modal-decoration.left {
@@ -86,11 +93,13 @@
 
 .welcome-video-container {
   width: 100%;
-  border-radius: 12px;
+  border-radius: 16px;
   overflow: hidden;
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 16px 40px rgba(44, 44, 44, 0.15);
   background-color: #000;
   margin-bottom: 1.5rem;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  position: relative;
 }
 
 .welcome-video {
@@ -99,50 +108,116 @@
   aspect-ratio: 16 / 9;
 }
 
-.welcome-video-navigation {
+/* Custom Video Controls */
+.custom-video-controls {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background: linear-gradient(transparent, rgba(0, 0, 0, 0.8));
+  padding: 1rem;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.welcome-video-container:hover .custom-video-controls {
+  opacity: 1;
+}
+
+.video-progress-container {
+  margin-bottom: 0.8rem;
+}
+
+.video-progress-bar {
+  width: 100%;
+  height: 6px;
+  background: rgba(255, 255, 255, 0.3);
+  border-radius: 3px;
+  cursor: pointer;
+  position: relative;
+}
+
+.video-progress-filled {
+  height: 100%;
+  background: var(--primary-sage);
+  border-radius: 3px;
+  transition: width 0.1s ease;
+}
+
+.video-controls-bottom {
   display: flex;
-  flex-direction: column;
+  justify-content: space-between;
   align-items: center;
 }
 
-.welcome-video-navigation h3 {
-  font-family: 'Playfair Display', serif;
-  font-size: 1.4rem;
-  color: var(--dark-text);
-  margin-bottom: 1rem;
-}
-
-.welcome-video-buttons {
+.video-controls-left {
   display: flex;
+  align-items: center;
   gap: 1rem;
-  justify-content: center;
-  flex-wrap: wrap;
 }
 
-.video-nav-btn {
-  background-color: white;
-  border: 2px solid var(--mint-green);
-  padding: 0.7rem 1.5rem;
-  border-radius: 30px;
-  font-size: 1rem;
-  font-weight: 500;
-  color: var(--dark-text);
-  cursor: pointer;
-  transition: all 0.3s ease;
-  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
-}
-
-.video-nav-btn:hover {
-  transform: translateY(-3px);
-  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
-}
-
-.video-nav-btn.active {
-  background-color: var(--gold);
+.control-btn {
+  background: rgba(255, 255, 255, 0.1);
+  border: none;
   color: white;
-  font-weight: 600;
-  border-color: var(--gold);
+  font-size: 1.1rem;
+  cursor: pointer;
+  padding: 0.5rem;
+  border-radius: 6px;
+  transition: all 0.3s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
+
+.control-btn:hover {
+  background: rgba(255, 255, 255, 0.2);
+  transform: scale(1.05);
+}
+
+.volume-controls {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.volume-slider {
+  width: 80px;
+  height: 4px;
+  background: rgba(255, 255, 255, 0.3);
+  border-radius: 2px;
+  outline: none;
+  cursor: pointer;
+  -webkit-appearance: none;
+}
+
+.volume-slider::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  width: 16px;
+  height: 16px;
+  background: var(--primary-sage);
+  border-radius: 50%;
+  cursor: pointer;
+}
+
+.volume-slider::-moz-range-thumb {
+  width: 16px;
+  height: 16px;
+  background: var(--primary-sage);
+  border-radius: 50%;
+  cursor: pointer;
+  border: none;
+}
+
+.time-display {
+  color: white;
+  font-size: 0.9rem;
+  font-family: 'Inter', sans-serif;
+  font-weight: 500;
+  min-width: 100px;
+}
+
+
 
 @keyframes fadeIn {
   from { opacity: 0; }
@@ -159,25 +234,69 @@
   .welcome-modal-content {
     width: 95%;
   }
-  
+
   .welcome-modal-header h2 {
     font-size: 1.5rem;
   }
-  
+
   .welcome-modal-decoration {
     width: 40px;
   }
-  
+
   .welcome-modal-body {
     padding: 1rem 1.5rem 1.5rem;
   }
-  
-  .welcome-video-navigation h3 {
-    font-size: 1.2rem;
+
+
+
+  /* Mobile video controls - always visible */
+  .custom-video-controls {
+    padding: 0.8rem;
+    opacity: 1 !important;
   }
-  
-  .video-nav-btn {
-    padding: 0.6rem 1.2rem;
+
+  .video-controls-left {
+    gap: 0.8rem;
+  }
+
+  .control-btn {
+    font-size: 1rem;
+    padding: 0.4rem;
+  }
+
+  .volume-controls {
+    gap: 0.3rem;
+  }
+
+  .volume-slider {
+    width: 60px;
+  }
+
+  .time-display {
+    font-size: 0.8rem;
+    min-width: 80px;
+  }
+
+  .video-progress-bar {
+    height: 8px;
+  }
+}
+
+@media screen and (max-width: 480px) {
+  .video-controls-left {
+    gap: 0.5rem;
+  }
+
+  .volume-controls {
+    display: none; /* Hide volume controls on very small screens */
+  }
+
+  .time-display {
+    font-size: 0.7rem;
+    min-width: 70px;
+  }
+
+  .control-btn {
     font-size: 0.9rem;
   }
 }

@@ -84,116 +84,181 @@ function Countdown() {
 
   return (
     <div className="countdown-page">
-      <div className="countdown-timer">
-        <div className="countdown-container">
-          <h2>Counting down to our special day</h2>
-          <div className="timer-display">
-            <div className="time-block days">
-              <div className="time-circle">
-                <span className="time-value">{timeLeft.days}</span>
-              </div>
-              <span className="time-label">Days</span>
+      {/* Hero Section with Countdown */}
+      <section className="countdown-hero">
+        <div className="hero-background">
+          <div className="hero-overlay"></div>
+        </div>
+        <div className="hero-content">
+          <div className="countdown-header">
+            <h1>Our Wedding Countdown</h1>
+            <p className="countdown-subtitle">Every moment brings us closer to forever</p>
+            <div className="wedding-date-info">
+              <span className="wedding-date">June 5th, 2025</span>
+              <span className="wedding-time">8:35 PM</span>
             </div>
-            <div className="time-separator">:</div>
-            <div className="time-block hours">
-              <div className="time-circle">
-                <span className="time-value">{timeLeft.hours}</span>
+          </div>
+
+          <div className="countdown-timer-main">
+            <div className="timer-grid">
+              <div className="time-unit">
+                <div className="time-number">{timeLeft.days}</div>
+                <div className="time-label">Days</div>
               </div>
-              <span className="time-label">Hours</span>
-            </div>
-            <div className="time-separator">:</div>
-            <div className="time-block minutes">
-              <div className="time-circle">
-                <span className="time-value">{timeLeft.minutes}</span>
+              <div className="time-unit">
+                <div className="time-number">{timeLeft.hours}</div>
+                <div className="time-label">Hours</div>
               </div>
-              <span className="time-label">Minutes</span>
-            </div>
-            <div className="time-separator">:</div>
-            <div className="time-block seconds">
-              <div className="time-circle">
-                <span className="time-value">{timeLeft.seconds}</span>
+              <div className="time-unit">
+                <div className="time-number">{timeLeft.minutes}</div>
+                <div className="time-label">Minutes</div>
               </div>
-              <span className="time-label">Seconds</span>
+              <div className="time-unit">
+                <div className="time-number">{timeLeft.seconds}</div>
+                <div className="time-label">Seconds</div>
+              </div>
             </div>
           </div>
         </div>
-      </div>
-      
-      <div className="countdown-content">
+      </section>
+
+      {/* Main Content */}
+      <div className="countdown-main">
         <div className="container">
-          <section className="timeline-section fade-in-section">
-            <h2>Wedding Timeline</h2>
-            <div className="timeline-container">
+
+          {/* Journey Timeline */}
+          <section className="journey-section fade-in-section">
+            <div className="section-header">
+              <h2>Our Wedding Journey</h2>
+              <p>Follow along as we celebrate each special moment</p>
+            </div>
+
+            <div className="journey-timeline">
               {events.map((event, index) => (
-                <div 
-                  key={index} 
-                  className={`timeline-step ${index === currentEvent ? 'active' : ''} ${index < currentEvent ? 'completed' : ''}`}
+                <div
+                  key={index}
+                  className={`journey-milestone ${index === currentEvent ? 'current' : ''} ${index < currentEvent ? 'completed' : ''}`}
                 >
-                  <div className="timeline-icon">{event.icon}</div>
-                  <div className="timeline-connector"></div>
-                  <div className="timeline-content">
+                  <div className="milestone-marker">
+                    <div className="milestone-icon">{event.icon}</div>
+                    <div className="milestone-line"></div>
+                  </div>
+                  <div className="milestone-content">
+                    <div className="milestone-badge">
+                      {index < currentEvent ? 'Completed' : index === currentEvent ? 'Current' : 'Upcoming'}
+                    </div>
                     <h3>{event.name}</h3>
-                    <p>{event.date.toLocaleDateString('en-US', { 
-                      weekday: 'long', 
-                      month: 'long', 
-                      day: 'numeric' 
-                    })}</p>
-                    <p>{event.date.toLocaleTimeString('en-US', { 
-                      hour: '2-digit', 
-                      minute: '2-digit' 
-                    })}</p>
+                    <div className="milestone-datetime">
+                      <span className="milestone-date">
+                        {event.date.toLocaleDateString('en-US', {
+                          weekday: 'long',
+                          month: 'long',
+                          day: 'numeric'
+                        })}
+                      </span>
+                      <span className="milestone-time">
+                        {event.date.toLocaleTimeString('en-US', {
+                          hour: '2-digit',
+                          minute: '2-digit'
+                        })}
+                      </span>
+                    </div>
                   </div>
                 </div>
               ))}
             </div>
           </section>
-          
-          <section className="event-details fade-in-section">
-            <h2>Event Details</h2>
-            <div className="event-cards">
+
+          {/* Event Highlights */}
+          <section className="highlights-section fade-in-section">
+            <div className="section-header">
+              <h2>Event Highlights</h2>
+              <p>Discover what makes each celebration special</p>
+            </div>
+
+            <div className="highlights-grid">
               {events.map((event, index) => (
-                <div key={index} className="event-card">
-                  <div className="event-icon">{event.icon}</div>
-                  <h3>{event.name}</h3>
-                  <p className="event-date">
-                    {event.date.toLocaleDateString('en-US', { 
-                      weekday: 'long', 
-                      month: 'long', 
-                      day: 'numeric' 
-                    })}
-                  </p>
-                  <p className="event-time">
-                    {event.date.toLocaleTimeString('en-US', { 
-                      hour: '2-digit', 
-                      minute: '2-digit' 
-                    })}
-                  </p>
-                  <p className="event-description">
-                    {index === 0 && "Join us for welcome drinks and meet the families in a relaxed setting."}
-                    {index === 1 && "A traditional pre-wedding ceremony with turmeric paste application."}
-                    {index === 2 && "The auspicious wedding ceremony with traditional rituals."}
-                    {index === 3 && "Celebrate with us at our reception dinner and dancing."}
-                  </p>
-                  <Link to={`/${event.name.toLowerCase()}`} className="btn">View Details</Link>
+                <div key={index} className="highlight-card">
+                  <div className="highlight-header">
+                    <div className="highlight-icon">{event.icon}</div>
+                    <div className="highlight-info">
+                      <h3>{event.name}</h3>
+                      <p className="highlight-date">
+                        {event.date.toLocaleDateString('en-US', {
+                          month: 'short',
+                          day: 'numeric'
+                        })} at {event.date.toLocaleTimeString('en-US', {
+                          hour: '2-digit',
+                          minute: '2-digit'
+                        })}
+                      </p>
+                    </div>
+                  </div>
+                  <div className="highlight-description">
+                    {index === 0 && "Join us for welcome drinks and meet the families in a relaxed setting before the celebrations begin."}
+                    {index === 1 && "A traditional pre-wedding ceremony with turmeric paste application, bringing good luck and blessings."}
+                    {index === 2 && "The auspicious wedding ceremony with traditional rituals, where two hearts become one."}
+                    {index === 3 && "Celebrate with us at our reception dinner with delicious food, music, and dancing."}
+                  </div>
+                  <div className="highlight-actions">
+                    <Link to={`/${event.name.toLowerCase()}`} className="highlight-btn">
+                      Learn More
+                    </Link>
+                  </div>
                 </div>
               ))}
             </div>
           </section>
-          
-          <section className="venue-section fade-in-section">
-            <h2>Venue Information</h2>
-            <div className="venue-container">
-              <div className="venue-map">
-                <div className="map-placeholder"></div>
+
+          {/* Venue Showcase */}
+          <section className="venue-showcase fade-in-section">
+            <div className="section-header">
+              <h2>Our Venue</h2>
+              <p>Where our love story unfolds</p>
+            </div>
+
+            <div className="venue-content">
+              <div className="venue-visual">
+                <div className="venue-image-placeholder">
+                  <div className="venue-image-overlay">
+                    <span>📍</span>
+                  </div>
+                </div>
               </div>
-              <div className="venue-details">
+              <div className="venue-info">
                 <h3>The Grand Pavilion</h3>
-                <p>123 Wedding Lane, Mumbai, India</p>
-                <p>Our beautiful venue is located in the heart of Mumbai, offering stunning views and elegant spaces for all our wedding events.</p>
-                <a href="https://maps.google.com" target="_blank" rel="noopener noreferrer" className="btn">Get Directions</a>
+                <div className="venue-address">
+                  <span>📍 123 Wedding Lane, Mumbai, India</span>
+                </div>
+                <p className="venue-description">
+                  Our beautiful venue is located in the heart of Mumbai, offering stunning views and elegant spaces for all our wedding events. The Grand Pavilion combines traditional architecture with modern amenities, creating the perfect backdrop for our special day.
+                </p>
+                <div className="venue-features">
+                  <div className="feature">
+                    <span className="feature-icon">🏛️</span>
+                    <span>Grand Architecture</span>
+                  </div>
+                  <div className="feature">
+                    <span className="feature-icon">🌸</span>
+                    <span>Beautiful Gardens</span>
+                  </div>
+                  <div className="feature">
+                    <span className="feature-icon">🅿️</span>
+                    <span>Ample Parking</span>
+                  </div>
+                </div>
+                <div className="venue-actions">
+                  <a href="https://maps.google.com" target="_blank" rel="noopener noreferrer" className="venue-btn primary">
+                    Get Directions
+                  </a>
+                  <button className="venue-btn secondary">
+                    View Gallery
+                  </button>
+                </div>
               </div>
             </div>
           </section>
+
         </div>
       </div>
     </div>

@@ -44,10 +44,10 @@
   opacity: 1;
 }
 
-/* Hero Section */
+/* Modern Hero Section */
 .hero-section {
   height: 100vh;
-  background-image: url('/images/blush-watercolor-bg.jpg');
+  background: linear-gradient(135deg, var(--accent-cream) 0%, var(--warm-beige) 30%, var(--light-sage) 100%);
   background-size: cover;
   background-position: center;
   display: flex;
@@ -60,96 +60,104 @@
   overflow: hidden;
 }
 
-/* Add a subtle overlay */
+/* Modern overlay with subtle texture */
 .hero-overlay {
   position: absolute;
   top: 0;
   left: 0;
   width: 100%;
   height: 100%;
-  background: radial-gradient(circle, rgba(255,255,255,0) 0%, rgba(255,248,231,0.3) 100%);
+  background: radial-gradient(circle at 30% 70%, rgba(107,142,107,0.1) 0%, transparent 50%),
+              radial-gradient(circle at 70% 30%, rgba(212,165,116,0.08) 0%, transparent 50%);
   z-index: 1;
 }
 
 .hero-content {
   position: relative;
   z-index: 10;
-  background-color: rgba(255, 255, 255, 0.85);
-  padding: 3rem 4rem;
-  border-radius: 10px;
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
-  max-width: 800px;
+  background: rgba(255, 255, 255, 0.95);
+  backdrop-filter: blur(10px);
+  padding: 4rem 5rem;
+  border-radius: 24px;
+  box-shadow: 0 20px 60px rgba(44, 44, 44, 0.1),
+              0 8px 32px rgba(107, 142, 107, 0.15);
+  max-width: 900px;
   margin: 0 auto;
-  
+  border: 1px solid rgba(255, 255, 255, 0.2);
 }
 
-.hero-content:before,
-.hero-content:after {
+.hero-content:before {
   content: '';
   position: absolute;
-  width: calc(100% - 40px);
-  height: calc(100% - 40px);
-  border: 1px solid var(--gold);
-  top: 20px;
-  left: 20px;
+  width: calc(100% - 20px);
+  height: calc(100% - 20px);
+  border: 2px solid var(--refined-gold);
+  top: 10px;
+  left: 10px;
   z-index: -1;
-  border-radius: 5px;
-}
-
-.hero-content:after {
-  transform: rotate(2deg);
+  border-radius: 20px;
+  opacity: 0.3;
 }
 
 .invitation-intro {
-  font-size: 24px;
-  margin-bottom: 1.5rem;
-  color: var(--dark-text);
+  font-size: 1.4rem;
+  margin-bottom: 2rem;
+  color: var(--soft-gray);
   font-weight: 400;
   font-style: italic;
+  font-family: 'Inter', sans-serif;
+  letter-spacing: 0.5px;
 }
 
 .couple-names {
-  font-size: 48px;
-  margin-bottom: 1.5rem;
+  font-size: 3.5rem;
+  margin-bottom: 2rem;
   font-weight: 700;
-  color: var(--dark-text);
+  color: var(--charcoal-text);
   position: relative;
   display: inline-block;
+  background: linear-gradient(135deg, var(--primary-sage), var(--secondary-terracotta));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
 }
 
 .couple-names:after {
   content: '';
   position: absolute;
-  width: 80px;
-  height: 3px;
-  background-color: var(--gold);
-  bottom: -10px;
+  width: 100px;
+  height: 4px;
+  background: linear-gradient(90deg, var(--refined-gold), var(--secondary-terracotta));
+  bottom: -15px;
   left: 50%;
   transform: translateX(-50%);
+  border-radius: 2px;
 }
 
 .invitation-text {
-  font-size: 22px;
+  font-size: 1.3rem;
   margin-bottom: 2.5rem;
   font-style: italic;
-  color: var(--dark-text);
+  color: var(--charcoal-text);
+  font-family: 'Inter', sans-serif;
+  font-weight: 400;
 }
 
 .wedding-date {
-  font-size: 22px;
-  margin-bottom: 0.5rem;
-  font-family: 'Lato', sans-serif;
-  letter-spacing: 2px;
-  color: var(--dark-text);
+  font-size: 1.5rem;
+  margin-bottom: 0.8rem;
+  font-family: 'Inter', sans-serif;
+  letter-spacing: 1px;
+  color: var(--primary-sage);
   font-weight: 600;
 }
 
 .wedding-venue {
-  font-size: 20px;
-  margin-bottom: 2rem;
-  font-family: 'Lato', sans-serif;
-  color: var(--dark-text);
-  font-weight: 600;
+  font-size: 1.2rem;
+  margin-bottom: 3rem;
+  font-family: 'Inter', sans-serif;
+  color: var(--soft-gray);
+  font-weight: 500;
 }
 
 /* New button container and button styles */
@@ -163,24 +171,43 @@
 }
 
 .ceremony-button {
-  display: inline-block;
-  background-color: var(--gold);
-  color: white;
-  padding: 1rem 2.5rem;
-  border-radius: 30px;
-  font-size: 18px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(135deg, var(--primary-sage), var(--light-sage));
+  color: var(--pure-white);
+  padding: 1.2rem 3rem;
+  border-radius: 16px;
+  font-size: 1.1rem;
   font-weight: 600;
+  font-family: 'Inter', sans-serif;
   text-decoration: none;
-  box-shadow: 0 4px 15px rgba(184, 134, 11, 0.3);
-  transition: all 0.3s ease;
+  box-shadow: 0 8px 24px rgba(107, 142, 107, 0.3);
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
   position: relative;
   z-index: 20;
+  overflow: hidden;
+}
+
+.ceremony-button::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
+  transition: left 0.6s;
+}
+
+.ceremony-button:hover::before {
+  left: 100%;
 }
 
 .ceremony-button:hover {
-  transform: translateY(-5px);
-  box-shadow: 0 8px 25px rgba(184, 134, 11, 0.4);
-  background-color: #d4af37;
+  transform: translateY(-3px);
+  box-shadow: 0 12px 32px rgba(107, 142, 107, 0.4);
+  background: linear-gradient(135deg, var(--refined-gold), var(--secondary-terracotta));
 }
 
 /* Make sure the button is visible with proper z-index */
@@ -265,10 +292,10 @@
   transform: translateY(0);
 }
 
-/* Intro Section */
+/* Modern Intro Section */
 .intro-section {
   padding: 8rem 2rem;
-  background-color: white;
+  background: var(--pure-white);
   position: relative;
   overflow: hidden;
 }
@@ -280,8 +307,8 @@
   left: 0;
   width: 100%;
   height: 100%;
-  background-image: url('/images/subtle-pattern.png');
-  opacity: 0.05;
+  background: radial-gradient(circle at 20% 80%, rgba(107,142,107,0.03) 0%, transparent 50%),
+              radial-gradient(circle at 80% 20%, rgba(212,165,116,0.03) 0%, transparent 50%);
   z-index: 0;
 }
 
@@ -438,63 +465,77 @@
 }
 
 .intro-text h2 {
-  font-size: 3rem;
+  font-size: 2.8rem;
   margin-bottom: 2rem;
   position: relative;
-  color: var(--dark-text);
+  color: var(--charcoal-text);
+  font-weight: 700;
 }
 
 .intro-text h2:after {
   content: '';
   position: absolute;
   width: 80px;
-  height: 3px;
-  background-color: var(--gold);
+  height: 4px;
+  background: linear-gradient(90deg, var(--refined-gold), var(--secondary-terracotta));
   bottom: -15px;
   left: 0;
+  border-radius: 2px;
 }
 
 .intro-text p {
   margin-bottom: 2rem;
-  line-height: 1.9;
+  line-height: 1.8;
   font-size: 1.1rem;
-  color: var(--light-text);
+  color: var(--soft-gray);
+  font-family: 'Inter', sans-serif;
+  font-weight: 400;
 }
 
 .read-more {
-  display: inline-block;
-  color: var(--dark-text);
+  display: inline-flex;
+  align-items: center;
+  color: var(--primary-sage);
   font-weight: 600;
+  font-family: 'Inter', sans-serif;
   text-decoration: none;
-  transition: all 0.3s ease;
-  padding: 0.5rem 0;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  padding: 0.8rem 0;
   position: relative;
+  gap: 0.5rem;
 }
 
-.read-more:after {
-  content: '';
-  position: absolute;
-  width: 0;
-  height: 2px;
-  bottom: 0;
-  left: 0;
-  background-color: var(--gold);
-  transition: width 0.3s ease;
+.read-more::after {
+  content: '→';
+  transition: transform 0.3s ease;
+}
+
+.read-more:hover::after {
+  transform: translateX(4px);
 }
 
 .read-more:hover {
-  color: var(--gold);
+  color: var(--secondary-terracotta);
+  transform: translateX(2px);
 }
 
-.read-more:hover:after {
-  width: 100%;
-}
-
-/* Event Preview Section */
+/* Modern Event Preview Section */
 .event-preview {
   padding: 6rem 2rem;
-  background-color: var(--ivory);
+  background: linear-gradient(135deg, var(--accent-cream) 0%, var(--warm-beige) 100%);
   text-align: center;
+  position: relative;
+}
+
+.event-preview::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: radial-gradient(circle at 50% 50%, rgba(107,142,107,0.05) 0%, transparent 70%);
+  z-index: 0;
 }
 
 .event-preview h2 {
@@ -502,58 +543,86 @@
   margin-bottom: 3rem;
   position: relative;
   display: inline-block;
+  color: var(--charcoal-text);
+  z-index: 1;
 }
 
 .event-preview h2:after {
   content: '';
   position: absolute;
-  width: 60px;
-  height: 3px;
-  background-color: var(--gold);
+  width: 80px;
+  height: 4px;
+  background: linear-gradient(90deg, var(--refined-gold), var(--secondary-terracotta));
   bottom: -10px;
   left: 50%;
   transform: translateX(-50%);
+  border-radius: 2px;
 }
 
 .event-cards {
   display: flex;
   justify-content: center;
-  gap: 2rem;
+  gap: 2.5rem;
   margin-top: 2rem;
+  position: relative;
+  z-index: 1;
 }
 
 .event-card {
-  background-color: white;
-  padding: 2rem;
-  border-radius: 10px;
-  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+  background: var(--pure-white);
+  backdrop-filter: blur(10px);
+  padding: 2.5rem;
+  border-radius: 20px;
+  box-shadow: 0 8px 32px rgba(44, 44, 44, 0.08);
   flex: 1;
-  max-width: 350px;
-  transition: all 0.3s ease;
+  max-width: 380px;
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  position: relative;
+  overflow: hidden;
+}
+
+.event-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 4px;
+  background: linear-gradient(90deg, var(--primary-sage), var(--secondary-terracotta));
 }
 
 .event-card:hover {
-  transform: translateY(-10px);
-  box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
+  transform: translateY(-8px);
+  box-shadow: 0 16px 48px rgba(107, 142, 107, 0.15);
 }
 
 .event-card h3 {
-  font-size: 1.5rem;
-  margin-bottom: 0.5rem;
+  font-size: 1.6rem;
+  margin-bottom: 0.8rem;
+  color: var(--charcoal-text);
+  font-weight: 600;
 }
 
 .event-date {
-  color: var(--gold);
+  color: var(--primary-sage);
   font-weight: 600;
-  margin-bottom: 1rem;
+  font-family: 'Inter', sans-serif;
+  margin-bottom: 1.2rem;
+  font-size: 1rem;
 }
 
 .event-card p {
-  margin-bottom: 1.5rem;
+  margin-bottom: 2rem;
+  color: var(--soft-gray);
+  font-family: 'Inter', sans-serif;
+  line-height: 1.6;
 }
 
 .event-card .btn {
   margin-top: 1rem;
+  width: 100%;
+  justify-content: center;
 }
 
 /* Responsive Styles */

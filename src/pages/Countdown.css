@@ -45,6 +45,68 @@
 
 .countdown-header {
   margin-bottom: 4rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+/* Floating Emblem Styles */
+.floating-emblem {
+  margin-bottom: 2rem;
+  position: relative;
+}
+
+.emblem-outer {
+  width: 120px;
+  height: 120px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, var(--light-sage), var(--primary-sage));
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 10px 30px rgba(168, 196, 168, 0.4);
+  position: relative;
+  animation: float 3s ease-in-out infinite;
+}
+
+.emblem-outer:before {
+  content: '';
+  position: absolute;
+  width: 140px;
+  height: 140px;
+  border: 3px dashed rgba(168, 196, 168, 0.5);
+  border-radius: 50%;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  animation: rotate 20s linear infinite;
+}
+
+.emblem-inner {
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+  background: var(--pure-white);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+}
+
+.emblem-icon {
+  font-size: 2.5rem;
+  color: var(--primary-sage);
+}
+
+/* Keyframe animations */
+@keyframes float {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-10px); }
+}
+
+@keyframes rotate {
+  from { transform: translate(-50%, -50%) rotate(0deg); }
+  to { transform: translate(-50%, -50%) rotate(360deg); }
 }
 
 .countdown-header h1 {
@@ -620,6 +682,25 @@
     font-size: 1.1rem;
   }
 
+  .emblem-outer {
+    width: 100px;
+    height: 100px;
+  }
+
+  .emblem-outer:before {
+    width: 120px;
+    height: 120px;
+  }
+
+  .emblem-inner {
+    width: 70px;
+    height: 70px;
+  }
+
+  .emblem-icon {
+    font-size: 2rem;
+  }
+
   .wedding-date-info {
     flex-direction: column;
     gap: 1rem;
@@ -667,6 +748,25 @@
 
   .countdown-subtitle {
     font-size: 1rem;
+  }
+
+  .emblem-outer {
+    width: 80px;
+    height: 80px;
+  }
+
+  .emblem-outer:before {
+    width: 100px;
+    height: 100px;
+  }
+
+  .emblem-inner {
+    width: 60px;
+    height: 60px;
+  }
+
+  .emblem-icon {
+    font-size: 1.8rem;
   }
 
   .wedding-date {

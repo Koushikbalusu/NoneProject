@@ -1,4 +1,4 @@
-import { useState, useEffect, useRef } from 'react';
+import { useState, useEffect } from 'react';
 import './RSVP.css';
 
 function RSVP() {
@@ -22,11 +22,7 @@ function RSVP() {
   // Modal state
   const [showModal, setShowModal] = useState(false);
   const [formType, setFormType] = useState('rsvp'); // 'rsvp' or 'guestbook'
-  
-  // Refs for form sections
-  const rsvpFormRef = useRef(null);
-  const guestbookFormRef = useRef(null);
-  
+
   // Particles for success modal
   const [particles, setParticles] = useState([]);
   
@@ -136,68 +132,104 @@ function RSVP() {
   };
   
   // Handle RSVP form submission
-  const handleRSVPSubmit = async (e) => {
+  const handleRSVPSubmit = (e) => {
     e.preventDefault();
-    
-    if (validateForm('rsvp')) {
-      setRsvpLoading(true);
-      
-      try {
-        // Here you would typically send the data to your backend
-        console.log('RSVP Submitted:', formData);
-        setFormType('rsvp');
-        setShowModal(true);
-        
-        // Reset form (except guestbook message)
-        setFormData({
-          ...formData,
-          name: '',
-          email: '',
-          attending: 'yes',
-          guestCount: 1,
-          dietaryNotes: ''
-        });
-      } catch (error) {
-        console.error('Error submitting RSVP:', error);
-        // Handle error (e.g., show error message to user)
-      } finally {
-        setRsvpLoading(false);
-      }
+    console.log('RSVP form submitted');
+    console.log('Current form data:', formData);
+
+    // Simple validation check
+    if (!formData.name.trim()) {
+      setErrors({ name: 'Name is required' });
+      console.log('Name validation failed');
+      return;
     }
+
+    if (!formData.email.trim()) {
+      setErrors({ email: 'Email is required' });
+      console.log('Email validation failed');
+      return;
+    }
+
+    if (!/\S+@\S+\.\S+/.test(formData.email)) {
+      setErrors({ email: 'Email is invalid' });
+      console.log('Email format validation failed');
+      return;
+    }
+
+    // Clear any previous errors
+    setErrors({});
+    console.log('Form validation passed');
+
+    setRsvpLoading(true);
+    console.log('Setting loading state to true');
+
+    // Simulate API call with setTimeout
+    setTimeout(() => {
+      console.log('RSVP Submitted:', formData);
+      setFormType('rsvp');
+      console.log('Setting form type to rsvp');
+      setShowModal(true);
+      console.log('Setting showModal to true');
+
+      // Reset form (except guestbook message)
+      setFormData({
+        ...formData,
+        name: '',
+        email: '',
+        attending: 'yes',
+        guestCount: 1,
+        dietaryNotes: ''
+      });
+
+      setRsvpLoading(false);
+      console.log('Setting loading state to false');
+    }, 1000);
   };
   
   // Handle Guestbook submission
-  const handleGuestbookSubmit = async (e) => {
+  const handleGuestbookSubmit = (e) => {
     e.preventDefault();
-    
-    if (validateForm('guestbook')) {
-      setGuestbookLoading(true);
-      
-      try {
-        // Here you would typically send the guestbook message to your backend
-        console.log('Guestbook Submitted:', formData.guestbookMessage);
-        setFormType('guestbook');
-        setShowModal(true);
-        
-        // Reset guestbook message
-        setFormData({
-          ...formData,
-          guestbookMessage: ''
-        });
-      } catch (error) {
-        console.error('Error submitting Guestbook:', error);
-        // Handle error (e.g., show error message to user)
-      } finally {
-        setGuestbookLoading(false);
-      }
+    console.log('Guestbook form submitted');
+    console.log('Guestbook message:', formData.guestbookMessage);
+
+    // Simple validation check
+    if (!formData.guestbookMessage.trim()) {
+      setErrors({ guestbookMessage: 'Please enter a message' });
+      console.log('Guestbook message validation failed');
+      return;
     }
+
+    // Clear any previous errors
+    setErrors({});
+    console.log('Guestbook validation passed');
+
+    setGuestbookLoading(true);
+    console.log('Setting guestbook loading state to true');
+
+    // Simulate API call with setTimeout
+    setTimeout(() => {
+      console.log('Guestbook Submitted:', formData.guestbookMessage);
+      setFormType('guestbook');
+      console.log('Setting form type to guestbook');
+      setShowModal(true);
+      console.log('Setting showModal to true');
+
+      // Reset guestbook message
+      setFormData({
+        ...formData,
+        guestbookMessage: ''
+      });
+
+      setGuestbookLoading(false);
+      console.log('Setting guestbook loading state to false');
+    }, 1000);
   };
   
   // Close modal
   const closeModal = () => {
     setShowModal(false);
   };
-  
+
   // Animate elements when they enter viewport
   useEffect(() => {
     const animateOnScroll = () => {
@@ -226,6 +258,13 @@ function RSVP() {
       <div className="hero-section">
         <div className="overlay"></div>
         <div className="hero-content">
+          <div className="floating-emblem">
+            <div className="emblem-outer">
+              <div className="emblem-inner">
+                <div className="emblem-icon">✉️</div>
+              </div>
+            </div>
+          </div>
           <h1>RSVP & Guestbook</h1>
           <p>We look forward to celebrating with you</p>
         </div>
@@ -239,28 +278,32 @@ function RSVP() {
           <form className="rsvp-form" onSubmit={handleRSVPSubmit}>
             <div className="form-group">
               <label htmlFor="name">Full Name</label>
-              <input 
-                type="text" 
-                id="name" 
-                name="name" 
-                value={formData.name} 
-                onChange={handleInputChange} 
-                required 
+              <input
+                type="text"
+                id="name"
+                name="name"
+                value={formData.name}
+                onChange={handleInputChange}
+                required
                 placeholder="Your full name"
+                className={errors.name ? 'error' : ''}
               />
+              {errors.name && <span className="error-message">{errors.name}</span>}
             </div>
-            
+
             <div className="form-group">
               <label htmlFor="email">Email Address</label>
-              <input 
-                type="email" 
-                id="email" 
-                name="email" 
-                value={formData.email} 
-                onChange={handleInputChange} 
-                required 
+              <input
+                type="email"
+                id="email"
+                name="email"
+                value={formData.email}
+                onChange={handleInputChange}
+                required
                 placeholder="Your email address"
+                className={errors.email ? 'error' : ''}
               />
+              {errors.email && <span className="error-message">{errors.email}</span>}
             </div>
             
             <div className="form-group">
@@ -332,15 +375,17 @@ function RSVP() {
           
           <form className="guestbook-form" onSubmit={handleGuestbookSubmit}>
             <div className="form-group">
-              <textarea 
-                id="guestbookMessage" 
-                name="guestbookMessage" 
-                value={formData.guestbookMessage} 
-                onChange={handleInputChange} 
-                required 
+              <textarea
+                id="guestbookMessage"
+                name="guestbookMessage"
+                value={formData.guestbookMessage}
+                onChange={handleInputChange}
+                required
                 placeholder="Share your wishes, advice, or memories with us..."
                 rows="5"
+                className={errors.guestbookMessage ? 'error' : ''}
               ></textarea>
+              {errors.guestbookMessage && <span className="error-message">{errors.guestbookMessage}</span>}
             </div>
             
             <button type="submit" className="btn heart-btn" disabled={guestbookLoading}>

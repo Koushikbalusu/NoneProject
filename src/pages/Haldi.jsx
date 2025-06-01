@@ -51,19 +51,19 @@ function Haldi() {
           <div className="hero-pattern"></div>
           <div className="hero-glow"></div>
         </div>
-        
+
         <div className="hero-container">
           <div className="ceremony-emblem">
             <div className="emblem-inner">
               <div className="emblem-icon">✨</div>
             </div>
           </div>
-          
+
           <div className="hero-title-container">
             <h1 className="hero-title">Haldi</h1>
             <div className="hero-date">June 4, 2025</div>
           </div>
-          
+
           <div className="couple-container">
             <div className="couple-photo-left"></div>
             <div className="couple-names">
@@ -73,7 +73,7 @@ function Haldi() {
             </div>
             <div className="couple-photo-right"></div>
           </div>
-          
+
           <div className="hero-description">
             <p>An auspicious pre-wedding celebration filled with turmeric, joy, and blessings</p>
           </div>

@@ -7,67 +7,48 @@ function Gallery() {
   const [currentVideo, setCurrentVideo] = useState(null);
   const videoRef = useRef(null);
   
-  // Gallery items with Cloudinary image links
+  // Gallery items with Cloudinary image links (excluding ceremony photos as they haven't happened yet)
   const galleryItems = [
     { id: 1, type: 'photo', category: 'engagement', src: 'https://res.cloudinary.com/da98b7kad/image/upload/v1748114074/PHOTO-2025-05-20-22-02-54_2_u8x5bk.jpg', caption: 'The proposal at sunset' },
     { id: 2, type: 'photo', category: 'engagement', src: 'https://res.cloudinary.com/da98b7kad/image/upload/v1748114074/PHOTO-2025-05-20-22-02-53_wcmq6o.jpg', caption: 'Ring close-up' },
     { id: 3, type: 'photo', category: 'pre-wedding', src: 'https://res.cloudinary.com/da98b7kad/image/upload/v1748114073/PHOTO-2025-05-20-22-02-51_f2xivv.jpg', caption: 'Beach photoshoot' },
     { id: 4, type: 'photo', category: 'pre-wedding', src: 'https://res.cloudinary.com/da98b7kad/image/upload/v1748114074/PHOTO-2025-05-20-22-02-52_xpszhb.jpg', caption: 'Garden walk' },
-    { id: 5, type: 'photo', category: 'ceremony', src: 'https://res.cloudinary.com/da98b7kad/image/upload/v1748114073/PHOTO-2025-05-20-22-02-50_z0j493.jpg', caption: 'First look' },
-    { id: 6, type: 'photo', category: 'ceremony', src: 'https://res.cloudinary.com/da98b7kad/image/upload/v1748114073/PHOTO-2025-05-20-22-02-53_2_usvrvt.jpg', caption: 'Exchanging vows' },
-    { id: 7, type: 'photo', category: 'ceremony', src: 'https://res.cloudinary.com/da98b7kad/image/upload/v1748114073/PHOTO-2025-05-20-22-02-52_3_qzsufy.jpg', caption: 'First kiss as newlyweds' },
     { id: 8, type: 'photo', category: 'pre-wedding', src: 'https://res.cloudinary.com/da98b7kad/image/upload/v1748114073/PHOTO-2025-05-20-22-02-52_2_dxu4rs.jpg', caption: 'Candid moment' },
     { id: 9, type: 'photo', category: 'engagement', src: 'https://res.cloudinary.com/da98b7kad/image/upload/v1748114073/PHOTO-2025-05-20-22-02-50_2_yl9ed6.jpg', caption: 'Celebration dinner' },
   ];
   
-  // Video items with added welcome videos from Cloudinary
+  // Video items (excluding ceremony videos as they haven't happened yet)
   const videoItems = [
-    { 
-      id: 101, 
-      category: 'engagement', 
-      thumbnail: '/images/gallery/video-thumb-1.jpg', 
-      src: '/videos/engagement.mp4', 
+    {
+      id: 101,
+      category: 'engagement',
+      thumbnail: '/images/gallery/video-thumb-1.jpg',
+      src: '/videos/engagement.mp4',
       caption: 'Engagement highlights',
       duration: '2:15'
     },
-    { 
-      id: 102, 
-      category: 'pre-wedding', 
-      thumbnail: '/images/gallery/video-thumb-2.jpg', 
-      src: '/videos/pre-wedding.mp4', 
+    {
+      id: 102,
+      category: 'pre-wedding',
+      thumbnail: '/images/gallery/video-thumb-2.jpg',
+      src: '/videos/pre-wedding.mp4',
       caption: 'Pre-wedding shoot behind the scenes',
       duration: '3:42'
     },
-    { 
-      id: 103, 
-      category: 'ceremony', 
-      thumbnail: '/images/gallery/video-thumb-3.jpg', 
-      src: '/videos/ceremony.mp4', 
-      caption: 'Wedding ceremony highlights',
-      duration: '5:30'
-    },
-    { 
-      id: 104, 
-      category: 'ceremony', 
-      thumbnail: '/images/gallery/video-thumb-4.jpg', 
-      src: '/videos/reception.mp4', 
-      caption: 'Reception party',
-      duration: '4:15'
-    },
-    // Added welcome videos
-    { 
-      id: 105, 
-      category: 'ceremony', 
-      thumbnail: 'https://res.cloudinary.com/da98b7kad/image/upload/c_thumb,w_400,g_face/v1748114592/WhatsApp_Video_2025-05-18_at_15.34.19_mc1x8j.jpg', 
-      src: 'https://res.cloudinary.com/da98b7kad/video/upload/v1748114592/WhatsApp_Video_2025-05-18_at_15.34.19_mc1x8j.mp4', 
+    // Welcome videos from Cloudinary
+    {
+      id: 105,
+      category: 'pre-wedding',
+      thumbnail: 'https://res.cloudinary.com/da98b7kad/image/upload/c_thumb,w_400,g_face/v1748114592/WhatsApp_Video_2025-05-18_at_15.34.19_mc1x8j.jpg',
+      src: 'https://res.cloudinary.com/da98b7kad/video/upload/v1748114592/WhatsApp_Video_2025-05-18_at_15.34.19_mc1x8j.mp4',
       caption: 'Welcome Message from the Groom',
       duration: '1:20'
     },
-    { 
-      id: 106, 
-      category: 'pre-wedding', 
-      thumbnail: 'https://res.cloudinary.com/da98b7kad/image/upload/c_thumb,w_400,g_face/v1748114589/WhatsApp_Video_2025-05-18_at_15.34.43_hwccex.jpg', 
-      src: 'https://res.cloudinary.com/da98b7kad/video/upload/v1748114589/WhatsApp_Video_2025-05-18_at_15.34.43_hwccex.mp4', 
+    {
+      id: 106,
+      category: 'pre-wedding',
+      thumbnail: 'https://res.cloudinary.com/da98b7kad/image/upload/c_thumb,w_400,g_face/v1748114589/WhatsApp_Video_2025-05-18_at_15.34.43_hwccex.jpg',
+      src: 'https://res.cloudinary.com/da98b7kad/video/upload/v1748114589/WhatsApp_Video_2025-05-18_at_15.34.43_hwccex.mp4',
       caption: 'Our Story - Personal Message',
       duration: '1:45'
     }
@@ -153,6 +134,13 @@ function Gallery() {
         <div className="hero-pattern"></div>
         <div className="hero-decoration"></div>
         <div className="hero-content">
+          <div className="floating-emblem">
+            <div className="emblem-outer">
+              <div className="emblem-inner">
+                <div className="emblem-icon">📸</div>
+              </div>
+            </div>
+          </div>
           <h1>Our Moments</h1>
           <p>A collection of memories from our journey together</p>
         </div>
@@ -186,53 +174,85 @@ function Gallery() {
           </button>
         </div>
         
-        <h2 className="section-title fade-in">Photos</h2>
-        <div className="masonry-grid">
-          {filteredPhotos.map((item, index) => (
-            <div 
-              key={item.id} 
-              className="masonry-item fade-in"
-              style={{ animationDelay: `${index * 0.1}s` }}
-            >
-              <div className="image-container">
-                <img src={item.src} alt={item.caption} />
-                <div className="image-caption">
-                  <p>{item.caption}</p>
+        {/* Show Coming Soon for Ceremony */}
+        {activeFilter === 'ceremony' ? (
+          <div className="coming-soon-section fade-in">
+            <div className="coming-soon-content">
+              <div className="coming-soon-icon">📸</div>
+              <h2>Ceremony Photos & Videos</h2>
+              <h3>Coming Soon!</h3>
+              <p>We can't wait to share the beautiful moments from our wedding ceremony with you. Photos and videos will be available here shortly after our special day on <strong>June 5th, 2025</strong>.</p>
+              <div className="coming-soon-details">
+                <div className="detail-item">
+                  <span className="detail-icon">📅</span>
+                  <span>Wedding Date: June 5th, 2025</span>
+                </div>
+                <div className="detail-item">
+                  <span className="detail-icon">⏰</span>
+                  <span>Ceremony Time: 8:35 PM</span>
+                </div>
+                <div className="detail-item">
+                  <span className="detail-icon">📍</span>
+                  <span>Location: The Grand Pavilion</span>
                 </div>
               </div>
+              <p className="coming-soon-note">Check back after the ceremony to see all the magical moments!</p>
             </div>
-          ))}
-        </div>
-        
-        <div className="video-section fade-in">
-          <h2 className="section-title">Captured Moments in Motion</h2>
-          <div className="video-section-intro">
-            <p>Relive our special moments through these videos. Click on any thumbnail to watch the full video.</p>
           </div>
-          
-          <div className="video-grid">
-            {filteredVideos.map((video, index) => (
-              <div 
-                key={video.id} 
-                className="video-item fade-in"
-                style={{ animationDelay: `${index * 0.1}s` }}
-                onClick={() => openVideoLightbox(video)}
-              >
-                <div className="video-thumbnail">
-                  <img src={video.thumbnail} alt={video.caption} />
-                  <div className="play-button">
-                    <span>▶</span>
-                  </div>
-                  <div className="video-badge">
-                    <span>Video</span>
+        ) : (
+          <>
+            <h2 className="section-title fade-in">Photos</h2>
+            <div className="masonry-grid">
+              {filteredPhotos.map((item, index) => (
+                <div
+                  key={item.id}
+                  className="masonry-item fade-in"
+                  style={{ animationDelay: `${index * 0.1}s` }}
+                >
+                  <div className="image-container">
+                    <img src={item.src} alt={item.caption} />
+                    <div className="image-caption">
+                      <p>{item.caption}</p>
+                    </div>
                   </div>
                 </div>
-                <p className="video-caption">{video.caption}</p>
-                <p className="video-duration">{video.duration}</p>
-              </div>
-            ))}
+              ))}
+            </div>
+          </>
+        )}
+        
+        {/* Hide video section for ceremony filter since no ceremony videos exist yet */}
+        {activeFilter !== 'ceremony' && (
+          <div className="video-section fade-in">
+            <h2 className="section-title">Captured Moments in Motion</h2>
+            <div className="video-section-intro">
+              <p>Relive our special moments through these videos. Click on any thumbnail to watch the full video.</p>
+            </div>
+
+            <div className="video-grid">
+              {filteredVideos.map((video, index) => (
+                <div
+                  key={video.id}
+                  className="video-item fade-in"
+                  style={{ animationDelay: `${index * 0.1}s` }}
+                  onClick={() => openVideoLightbox(video)}
+                >
+                  <div className="video-thumbnail">
+                    <img src={video.thumbnail} alt={video.caption} />
+                    <div className="play-button">
+                      <span>▶</span>
+                    </div>
+                    <div className="video-badge">
+                      <span>Video</span>
+                    </div>
+                  </div>
+                  <p className="video-caption">{video.caption}</p>
+                  <p className="video-duration">{video.duration}</p>
+                </div>
+              ))}
+            </div>
           </div>
-        </div>
+        )}
       </div>
       
       {/* Video Lightbox */}

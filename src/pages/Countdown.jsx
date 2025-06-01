@@ -15,12 +15,12 @@ function Countdown() {
   // Wedding date - June 05, 2025 at 8:35 PM
   const weddingDate = new Date('June 05, 2025 20:35:00').getTime();
   
-  // Event dates
+  // Event dates - Reordered: Haldi → Welcome Drinks → Dinner → Ceremony
   const events = [
+    { name: 'Haldi', date: new Date('June 04, 2025 11:00:00'), icon: '✨' },
     { name: 'Welcome Drinks', date: new Date('June 04, 2025 19:00:00'), icon: '🥂' },
-    { name: 'Haldi', date: new Date('June 05, 2025 11:00:00'), icon: '✨' },
-    { name: 'Ceremony', date: new Date('June 05, 2025 20:35:00'), icon: '💍' },
-    { name: 'Dinner', date: new Date('June 05, 2025 19:30:00'), icon: '🍽️' }
+    { name: 'Dinner', date: new Date('June 05, 2025 19:30:00'), icon: '🍽️' },
+    { name: 'Ceremony', date: new Date('June 05, 2025 20:35:00'), icon: '💍' }
   ];
 
   useEffect(() => {
@@ -91,6 +91,13 @@ function Countdown() {
         </div>
         <div className="hero-content">
           <div className="countdown-header">
+            <div className="floating-emblem">
+              <div className="emblem-outer">
+                <div className="emblem-inner">
+                  <div className="emblem-icon">⏰</div>
+                </div>
+              </div>
+            </div>
             <h1>Our Wedding Countdown</h1>
             <p className="countdown-subtitle">Every moment brings us closer to forever</p>
             <div className="wedding-date-info">
@@ -195,10 +202,10 @@ function Countdown() {
                     </div>
                   </div>
                   <div className="highlight-description">
-                    {index === 0 && "Join us for welcome drinks and meet the families in a relaxed setting before the celebrations begin."}
-                    {index === 1 && "A traditional pre-wedding ceremony with turmeric paste application, bringing good luck and blessings."}
-                    {index === 2 && "The auspicious wedding ceremony with traditional rituals, where two hearts become one."}
-                    {index === 3 && "Celebrate with us at our reception dinner with delicious food, music, and dancing."}
+                    {index === 0 && "A traditional pre-wedding ceremony with turmeric paste application, bringing good luck and blessings."}
+                    {index === 1 && "Join us for welcome drinks and meet the families in a relaxed setting before the celebrations begin."}
+                    {index === 2 && "Celebrate with us at our reception dinner with delicious food, music, and dancing."}
+                    {index === 3 && "The auspicious wedding ceremony with traditional rituals, where two hearts become one."}
                   </div>
                   <div className="highlight-actions">
                     <Link to={`/${event.name.toLowerCase()}`} className="highlight-btn">

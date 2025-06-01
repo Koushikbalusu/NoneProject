@@ -1,10 +1,8 @@
-import { useEffect, useState, useRef } from 'react'
+import { useEffect, useState } from 'react'
 import { Link } from 'react-router-dom'
 import './Landing.css'
 
 function Landing() {
-  const [scrolled, setScrolled] = useState(false)
-  const buttonContainerRef = useRef(null)
   const [currentSlide, setCurrentSlide] = useState(0)
   
   // Carousel images
@@ -36,14 +34,12 @@ function Landing() {
     }, 100);
     
     const handleScroll = () => {
-      setScrolled(window.scrollY > 100);
-
-      const arrow = document.querySelector('.scroll-arrow');
-      if (arrow) {
+      const indicator = document.querySelector('.scroll-indicator');
+      if (indicator) {
         if (window.scrollY > window.innerHeight / 2) {
-          arrow.classList.add('hidden');
+          indicator.classList.add('hidden');
         } else {
-          arrow.classList.remove('hidden');
+          indicator.classList.remove('hidden');
         }
       }
     };
@@ -88,6 +84,13 @@ function Landing() {
       <div className="hero-section">
         <div className="hero-overlay"></div>
         <div className="hero-content">
+          <div className="floating-emblem">
+            <div className="emblem-outer">
+              <div className="emblem-inner">
+                <div className="emblem-icon">💕</div>
+              </div>
+            </div>
+          </div>
           <h2 className="invitation-intro animate-on-load">Together with their families</h2>
           <h1 className="couple-names animate-on-load">Manasa & Brahma Reddy</h1>
           <p className="invitation-text animate-on-load">invite you to celebrate their marriage</p>
@@ -107,10 +110,11 @@ function Landing() {
         <div className="corner-decoration bottom-left"></div>
         <div className="corner-decoration bottom-right"></div>
         
-        <div className="scroll-arrow" onClick={scrollToContent}>
-          <span></span>
-          <span></span>
-          <span></span>
+        <div className="scroll-indicator" onClick={scrollToContent}>
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M7 13L12 18L17 13" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+            <path d="M7 6L12 11L17 6" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+          </svg>
         </div>
       </div>
       

@@ -17,7 +17,9 @@ function Footer() {
               <h4>Quick Links</h4>
               <ul>
                 <li><a href="/">Home</a></li>
+                <li><a href="/countdown">Countdown</a></li>
                 <li><a href="/wedding">Wedding</a></li>
+                <li><a href="/gallery">Gallery</a></li>
                 <li><a href="/rsvp">RSVP</a></li>
                 <li><a href="/contact">Contact</a></li>
               </ul>

@@ -140,6 +140,13 @@ function Wedding() {
         <div className="hero-pattern"></div>
         <div className="hero-decoration"></div>
         <div className="hero-content">
+          <div className="floating-emblem">
+            <div className="emblem-outer">
+              <div className="emblem-inner">
+                <div className="emblem-icon">💍</div>
+              </div>
+            </div>
+          </div>
           <div className="hero-title-wrapper">
             <div className="hero-ornament"></div>
             <h1>Manasa & Brahma Reddy</h1>

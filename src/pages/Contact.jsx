@@ -77,6 +77,13 @@ function Contact() {
       <div className="hero-section">
         <div className="overlay"></div>
         <div className="hero-content">
+          <div className="floating-emblem">
+            <div className="emblem-outer">
+              <div className="emblem-inner">
+                <div className="emblem-icon">📞</div>
+              </div>
+            </div>
+          </div>
           <h1>Contact & Venue</h1>
           <p>Find your way to our celebration</p>
         </div>

@@ -17,6 +17,7 @@ import Navbar from './components/Navbar'
 import Footer from './components/Footer'
 import WelcomeModal from './components/WelcomeModal'
 import MiniCountdown from './components/MiniCountdown'
+import ScrollToTop from './components/ScrollToTop'
 
 function App() {
   const [isLoading, setIsLoading] = useState(true)
@@ -111,6 +112,7 @@ function App() {
 
   return (
     <Router>
+      <ScrollToTop />
       <div className="app-container">
         <Navbar />
         <main>

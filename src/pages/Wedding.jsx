@@ -164,7 +164,7 @@ function Wedding() {
               <div className="event-icon">🕍</div>
               <h3>The Ceremony</h3>
               <div className="event-time">
-                <p className="date">June 04, 2025</p>
+                <p className="date">June 05, 2025</p>
                 <p className="time">Evening</p>
                 <p className="auspicious">Hastha Nakshtram, Dhanassu Lagnam</p>
               </div>
@@ -182,7 +182,7 @@ function Wedding() {
               <div className="event-icon">🍽️</div>
               <h3>The Dinner</h3>
               <div className="event-time">
-                <p className="date">June 04, 2025</p>
+                <p className="date">June 05, 2025</p>
                 <p className="time">07:30 PM onwards</p>
               </div>
               <div className="event-location">

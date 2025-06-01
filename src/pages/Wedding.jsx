@@ -151,7 +151,7 @@ function Wedding() {
             <div className="hero-ornament"></div>
             <h1>Manasa & Brahma Reddy</h1>
           </div>
-          <p>June 04, 2025</p>
+          <p>June 05, 2025</p>
         </div>
       </div>
       
